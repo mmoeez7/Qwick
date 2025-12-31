@@ -1,0 +1,184 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), sans-serif;
+}
+
+/* Smooth Scroll Styles */
+html {
+  scroll-behavior: smooth;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Scroll-triggered Animations */
+section:not(:first-of-type) {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+section:not(:first-of-type).animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fallback: Show content after 1 second if not animated */
+@keyframes fadeInFallback {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+section:not(:first-of-type):not(.animate-in) {
+  animation: fadeInFallback 0.8s ease-out 1s forwards;
+}
+
+/* Heading animations */
+section:not(:first-of-type) h1,
+section:not(:first-of-type) h2,
+section:not(:first-of-type) h3 {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s,
+    transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+}
+
+section:not(:first-of-type).animate-in h1,
+section:not(:first-of-type).animate-in h2,
+section:not(:first-of-type).animate-in h3 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Paragraph animations */
+section:not(:first-of-type) p {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.3s,
+    transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+}
+
+section:not(:first-of-type).animate-in p {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Card animations */
+[data-animate] {
+  opacity: 0;
+  transform: translateY(30px) scale(0.95);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-animate].animate-in {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Stagger animation for grid items */
+section:not(:first-of-type) .grid > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+section:not(:first-of-type).animate-in .grid > *:nth-child(1) {
+  transition-delay: 0.1s;
+}
+
+section:not(:first-of-type).animate-in .grid > *:nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+section:not(:first-of-type).animate-in .grid > *:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+section:not(:first-of-type).animate-in .grid > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Button animations */
+button {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+section.animate-in button {
+  opacity: 1;
+}
+
+/* Image animations */
+section:not(:first-of-type) img {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s,
+    transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s;
+}
+
+section:not(:first-of-type).animate-in img {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Prevent animation on hero section (first section) */
+section:first-of-type {
+  opacity: 1;
+  transform: none;
+}
+
+section:first-of-type h1,
+section:first-of-type h2,
+section:first-of-type h3,
+section:first-of-type p,
+section:first-of-type img,
+section:first-of-type button {
+  opacity: 1;
+  transform: none;
+}
