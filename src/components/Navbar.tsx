@@ -31,6 +31,17 @@ export default function Header() {
     }
   };
 
+  const handleServiceAreasClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (pathname !== "/serviceArea") {
+      // Navigate to service area page
+      router.push("/serviceArea");
+    } else {
+      // If already on service area page, just toggle dropdown
+      toggleDropdown("Service Areas");
+    }
+  };
+
   const navItems = [
     { name: "Home", href: "#home", hasDropdown: false },
     { name: "Services", href: "#services", hasDropdown: true },
@@ -64,6 +75,28 @@ export default function Header() {
                     {item.name === "Services" ? (
                       <button
                         onClick={handleServicesClick}
+                        className="text-white hover:text-[#C1FF72] transition-colors text-xs sm:text-sm flex items-center gap-1 whitespace-nowrap"
+                      >
+                        {item.name}
+                        <svg
+                          className={`w-3 h-3 sm:w-4 sm:h-4 transition-transform ${
+                            openDropdown === item.name ? "rotate-180" : ""
+                          }`}
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M19 9l-7 7-7-7"
+                          />
+                        </svg>
+                      </button>
+                    ) : item.name === "Service Areas" ? (
+                      <button
+                        onClick={handleServiceAreasClick}
                         className="text-white hover:text-[#C1FF72] transition-colors text-xs sm:text-sm flex items-center gap-1 whitespace-nowrap"
                       >
                         {item.name}
@@ -204,6 +237,35 @@ export default function Header() {
                             e.preventDefault();
                             if (pathname !== "/services") {
                               router.push("/services");
+                            } else {
+                              toggleDropdown(item.name);
+                            }
+                          }}
+                          className="w-full flex items-center justify-between px-3 sm:px-4 py-2 sm:py-2.5 text-white hover:text-[#C1FF72] hover:bg-gray-900 transition-all text-xs sm:text-sm rounded"
+                        >
+                          {item.name}
+                          <svg
+                            className={`w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform ${
+                              openDropdown === item.name ? "rotate-180" : ""
+                            }`}
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M19 9l-7 7-7-7"
+                            />
+                          </svg>
+                        </button>
+                      ) : item.name === "Service Areas" ? (
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            if (pathname !== "/serviceArea") {
+                              router.push("/serviceArea");
                             } else {
                               toggleDropdown(item.name);
                             }

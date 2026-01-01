@@ -13,7 +13,10 @@ export default function ServicesHeader() {
       
       <div className="container mx-auto max-w-6xl relative z-10 w-full">
         {/* Headline */}
-        <h1 className="font-bold text-white mb-2 sm:mb-4 leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-[60px]">
+        <h1 
+          data-animate
+          className="font-bold text-white mb-2 sm:mb-4 leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-[60px]"
+        >
           Grease trap and Line jetting
           <br />
           services
