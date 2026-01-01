@@ -1,0 +1,230 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import Image from "next/image";
+
+export default function WhatQwickCanDoSection() {
+    const [currentSlide, setCurrentSlide] = useState(0);
+    const [isPaused, setIsPaused] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+    const [isTablet, setIsTablet] = useState(false);
+
+    // Detect screen size
+    useEffect(() => {
+        const checkScreenSize = () => {
+            setIsMobile(window.innerWidth < 640);
+            setIsTablet(window.innerWidth >= 640 && window.innerWidth < 1024);
+        };
+        
+        checkScreenSize();
+        window.addEventListener('resize', checkScreenSize);
+        return () => window.removeEventListener('resize', checkScreenSize);
+    }, []);
+
+    const slides = [
+        {
+            icon: "/Home/serviceSection/icon1.svg",
+            title: "Fire Suppression",
+            subtitle: "Inspection and Service",
+            description: "If We Can't Reach It, We Can't Clean It. A kitchen exhaust system is only as safe as its most inaccessible point",
+            bgColor: "bg-[#E6FFC7]"
+        },
+        {
+            icon: "/Home/serviceSection/icon2.svg",
+            title: "Commercial Hood Cleaning & NFPA",
+            subtitle: "96 Compliance",
+            description: "A clean hood system isn't just about hygiene — it is your first line of defense against kitchen fires. We provide comprehensive exhaust system cleaning that meets and exceeds NFPA 96 Standards",
+            bgColor: "bg-[#E6FFC7]"
+        },
+        {
+            icon: "/Home/serviceSection/icon3.svg",
+            title: "Access Panel and Hinge",
+            subtitle: "kit Installation",
+            description: "If We Can't Reach It, We Can't Clean It. A kitchen exhaust system is only as safe as its most inaccessible point",
+            bgColor: "bg-[#E6FFC7]"
+        }
+    ];
+
+    const nextSlide = () => {
+        setCurrentSlide((prev) => (prev + 1) % slides.length);
+    };
+
+    const prevSlide = () => {
+        setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+    };
+
+    // Auto-slide every 2 seconds (similar to Swiper autoplay)
+    useEffect(() => {
+        if (isPaused) return;
+        
+        const interval = setInterval(() => {
+            setCurrentSlide((prev) => (prev + 1) % slides.length);
+        }, 2000);
+
+        return () => clearInterval(interval);
+    }, [slides.length, isPaused]);
+
+    return (
+        <section className="py-16 sm:py-20 lg:py-24 bg-black">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+                {/* Section Header */}
+                <div className="text-center mb-12 sm:mb-16">
+                    <h1 className="text-4xl md:text-5xl font-bold 
+               bg-gradient-to-r from-[#A9FF3E] to-white 
+               bg-clip-text text-transparent">
+                        What Qwick Can Do For You
+                    </h1>
+
+                    <p className="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed mt-5">
+                        End-to-End Solutions for Your Commercial Kitchen
+                    </p>
+                </div>
+
+                {/* Slider Container */}
+                <div 
+                    className="relative"
+                    onMouseEnter={() => setIsPaused(true)}
+                    onMouseLeave={() => setIsPaused(false)}
+                >
+                    {/* Navigation Arrows */}
+                    <button
+                        onClick={prevSlide}
+                        className="absolute left-2 sm:left-4 md:left-1/2 md:-translate-x-[450px] top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center shadow-lg transition-colors"
+                        aria-label="Previous slide"
+                    >
+                        <svg
+                            className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-gray-700"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M15 19l-7-7 7-7"
+                            />
+                        </svg>
+                    </button>
+
+                    <button
+                        onClick={nextSlide}
+                        className="absolute right-2 sm:right-4 md:right-auto md:left-1/2 md:translate-x-[450px] top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center shadow-lg transition-colors"
+                        aria-label="Next slide"
+                    >
+                        <svg
+                            className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-gray-700"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M9 5l7 7-7 7"
+                            />
+                        </svg>
+                    </button>
+
+                    {/* Slides Container */}
+                    <div className="overflow-hidden px-2 sm:px-4 md:px-8 lg:px-12 xl:px-16">
+                        <div className="relative flex items-center justify-center min-h-[400px] sm:min-h-[500px] md:h-[500px] lg:h-[600px]">
+                            {slides.map((slide, index) => {
+                                // Calculate relative position to current slide
+                                let position = index - currentSlide;
+                                
+                                // Handle infinite loop
+                                if (position > 1) position -= slides.length;
+                                if (position < -1) position += slides.length;
+                                
+                                // Determine card state
+                                const isActive = position === 0;
+                                const isLeft = position === -1 || position === slides.length - 1;
+                                const isRight = position === 1 || position === -(slides.length - 1);
+                                const isVisible = isActive || isLeft || isRight;
+                                
+                                if (!isVisible) return null;
+                                
+                                // Calculate transform and scale - responsive values
+                                let translateX = 0;
+                                let scale = 0.7;
+                                let opacity = 0.4;
+                                let zIndex = 1;
+                                let maxWidth = '90%';
+                                
+                                if (isActive) {
+                                    translateX = 0;
+                                    scale = 1;
+                                    opacity = 1;
+                                    zIndex = 10;
+                                    maxWidth = isMobile ? '95%' : isTablet ? '500px' : '600px';
+                                } else if (isLeft) {
+                                    translateX = isMobile ? -45 : isTablet ? -38 : -35;
+                                    scale = isMobile ? 0.6 : isTablet ? 0.7 : 0.75;
+                                    opacity = isMobile ? 0.25 : isTablet ? 0.4 : 0.5;
+                                    zIndex = 2;
+                                    maxWidth = isMobile ? '85%' : isTablet ? '400px' : '450px';
+                                } else if (isRight) {
+                                    translateX = isMobile ? 45 : isTablet ? 38 : 35;
+                                    scale = isMobile ? 0.6 : isTablet ? 0.7 : 0.75;
+                                    opacity = isMobile ? 0.25 : isTablet ? 0.4 : 0.5;
+                                    zIndex = 2;
+                                    maxWidth = isMobile ? '85%' : isTablet ? '400px' : '450px';
+                                }
+                                
+                                return (
+                                    <div
+                                        key={index}
+                                        className="absolute transition-all duration-500 ease-in-out"
+                                        style={{
+                                            transform: `translateX(${translateX}%) scale(${scale})`,
+                                            opacity: opacity,
+                                            zIndex: zIndex,
+                                            width: '100%',
+                                            maxWidth: maxWidth,
+                                        }}
+                                    >
+                                        <div
+                                            className={`relative ${slide.bgColor} rounded-lg sm:rounded-xl shadow-lg h-full ${
+                                                isActive 
+                                                    ? 'p-6 sm:p-8 md:p-10 lg:p-12' 
+                                                    : 'p-4 sm:p-6 md:p-8'
+                                            }`}
+                                        >
+                                            {/* Content */}
+                                            <div className="text-center">
+                                                <h3 className={`font-bold text-black mb-2 ${
+                                                    isActive 
+                                                        ? 'text-xl sm:text-2xl md:text-3xl' 
+                                                        : 'text-base sm:text-lg md:text-xl'
+                                                }`}>
+                                                    {slide.title}
+                                                </h3>
+                                                <h4 className={`font-bold text-black mb-4 sm:mb-6 ${
+                                                    isActive 
+                                                        ? 'text-lg sm:text-xl md:text-2xl' 
+                                                        : 'text-sm sm:text-base md:text-lg'
+                                                }`}>
+                                                    {slide.subtitle}
+                                                </h4>
+                                                <p className={`text-gray-700 leading-relaxed ${
+                                                    isActive 
+                                                        ? 'text-sm sm:text-base md:text-lg' 
+                                                        : 'text-xs sm:text-sm md:text-base'
+                                                }`}>
+                                                    {slide.description}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+}
+

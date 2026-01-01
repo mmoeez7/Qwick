@@ -1,9 +1,9 @@
 import { Header, HeroContent, ServicesSection, WhatQwickCanDoSection } from "@/app/hero";
-import Trust from "@/components/Trust";
-import Schedule from "@/components/Schedule";
-import Footer from "@/components/Footer";
-import Customers from "@/components/Customers";
-import ChooseUs from "@/components/ChooseUs";
+import Trust from "@/components/Home/Trust";
+import Schedule from "@/components/Home/Schedule";
+import Footer from "@/components/Footer/Footer";
+import Customers from "@/components/Home/Customers";
+import ChooseUs from "@/components/Home/ChooseUs";
 
 export default function Home() {
   return (
