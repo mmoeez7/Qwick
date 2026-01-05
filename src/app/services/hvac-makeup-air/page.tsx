@@ -6,17 +6,17 @@ import ServicesArea from "@/components/Services/ServicesArea";
 import Footer from "@/components/Footer/Footer";
 import ServiceSchedule from "@/components/Services/ServiceSchedule";
 
-export default function ServicesPage() {
+export default function HVACMakeupAirPage() {
   return (
     <div className="relative h-auto">
       {/* Navbar */}
       <Navbar />
       
       {/* Services Header */}
-      <ServicesHeader title="Services" />
+      <ServicesHeader title="HVAC & Make‑Up Air" />
       
       {/* Qwick Services Section */}
-      <QwickServices />
+      <QwickServices serviceSlug="hvac-makeup-air" />
 
       {/* Kitchen Maintenance Section */}
       <KitchenMaintenance />

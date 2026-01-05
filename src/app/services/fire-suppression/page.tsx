@@ -6,17 +6,17 @@ import ServicesArea from "@/components/Services/ServicesArea";
 import Footer from "@/components/Footer/Footer";
 import ServiceSchedule from "@/components/Services/ServiceSchedule";
 
-export default function ServicesPage() {
+export default function FireSuppressionPage() {
   return (
     <div className="relative h-auto">
       {/* Navbar */}
       <Navbar />
       
       {/* Services Header */}
-      <ServicesHeader title="Services" />
+      <ServicesHeader title="Fire Suppression Service" />
       
       {/* Qwick Services Section */}
-      <QwickServices />
+      <QwickServices serviceSlug="fire-suppression" />
 
       {/* Kitchen Maintenance Section */}
       <KitchenMaintenance />

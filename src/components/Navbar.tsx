@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -11,6 +11,7 @@ export default function Header() {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const pathname = usePathname();
   const router = useRouter();
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -20,15 +21,17 @@ export default function Header() {
     setOpenDropdown(openDropdown === item ? null : item);
   };
 
-  const handleServicesClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    if (pathname !== "/services") {
-      // Navigate to services page
-      router.push("/services");
-    } else {
-      // If already on services page, just toggle dropdown
-      toggleDropdown("Services");
-    }
+  const handleServicesHover = () => {
+    setOpenDropdown("Services");
+  };
+
+  const handleServicesLeave = () => {
+    // Small delay to allow clicking on dropdown items
+    setTimeout(() => {
+      if (dropdownRef.current && !dropdownRef.current.matches(':hover')) {
+        setOpenDropdown(null);
+      }
+    }, 200);
   };
 
   const handleServiceAreasClick = (e: React.MouseEvent) => {
@@ -42,6 +45,16 @@ export default function Header() {
     }
   };
 
+  const services = [
+    { name: "Commercial Hood Cleaning & NFPA 96 Compliance", href: "/services/commercial-hood-cleaning", slug: "commercial-hood-cleaning" },
+    { name: "Grease trap and Line jetting services", href: "/services/grease-trap-line-jetting", slug: "grease-trap-line-jetting" },
+    { name: "Fire Suppression Service", href: "/services/fire-suppression", slug: "fire-suppression" },
+    { name: "HVAC & Make‑Up Air", href: "/services/hvac-makeup-air", slug: "hvac-makeup-air" },
+    { name: "Pollution Control Unit (PCU) Service", href: "/services/pollution-control-unit", slug: "pollution-control-unit" },
+    { name: "Mechanical Preventive Maintenance", href: "/services/mechanical-preventive-maintenance", slug: "mechanical-preventive-maintenance" },
+    { name: "Emergency Service", href: "/services/emergency-service", slug: "emergency-service" },
+  ];
+
   const navItems = [
     { name: "Home", href: "#home", hasDropdown: false },
     { name: "Services", href: "#services", hasDropdown: true },
@@ -49,6 +62,28 @@ export default function Header() {
     { name: "About", href: "#about", hasDropdown: true },
     { name: "Contact", href: "#contact", hasDropdown: true },
   ];
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Node;
+      // Check if click is outside the dropdown container
+      if (dropdownRef.current && !dropdownRef.current.contains(target)) {
+        setOpenDropdown(null);
+      }
+    };
+
+    if (openDropdown) {
+      // Add event listener with a small delay to avoid immediate closure
+      setTimeout(() => {
+        document.addEventListener("mousedown", handleClickOutside);
+      }, 0);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [openDropdown]);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black">
@@ -69,31 +104,57 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-3 lg:gap-5 xl:gap-6 2xl:gap-8">
             {navItems.map((item) => (
-              <div key={item.name} className="relative group">
+              <div 
+                key={item.name} 
+                ref={item.hasDropdown && openDropdown === item.name && item.name !== "Services" ? dropdownRef : null} 
+                className="relative group"
+              >
                 {item.hasDropdown ? (
                   <>
                     {item.name === "Services" ? (
-                      <button
-                        onClick={handleServicesClick}
-                        className="text-white hover:text-[#C1FF72] transition-colors text-xs sm:text-sm flex items-center gap-1 whitespace-nowrap"
+                      <div
+                        ref={dropdownRef}
+                        onMouseEnter={handleServicesHover}
+                        onMouseLeave={handleServicesLeave}
+                        className="relative"
                       >
-                        {item.name}
-                        <svg
-                          className={`w-3 h-3 sm:w-4 sm:h-4 transition-transform ${
-                            openDropdown === item.name ? "rotate-180" : ""
-                          }`}
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
+                        <button
+                          className="text-white hover:text-[#C1FF72] transition-colors text-xs sm:text-sm flex items-center gap-1 whitespace-nowrap"
                         >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M19 9l-7 7-7-7"
-                          />
-                        </svg>
-                      </button>
+                          {item.name}
+                          <svg
+                            className={`w-3 h-3 sm:w-4 sm:h-4 transition-transform ${
+                              openDropdown === item.name ? "rotate-180" : ""
+                            }`}
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M19 9l-7 7-7-7"
+                            />
+                          </svg>
+                        </button>
+                        {openDropdown === item.name && (
+                          <div 
+                            className="absolute top-full left-0 mt-2 bg-black border border-gray-800 rounded-lg shadow-lg py-2 z-50 w-72 sm:w-80 md:w-96"
+                          >
+                            {services.map((service, index) => (
+                              <Link
+                                key={index}
+                                href={service.href}
+                                className="block px-4 py-2 text-white hover:bg-gray-900 hover:text-[#C1FF72] transition-colors text-sm"
+                                onClick={() => setOpenDropdown(null)}
+                              >
+                                {service.name}
+                              </Link>
+                            ))}
+                          </div>
+                        )}
+                      </div>
                     ) : item.name === "Service Areas" ? (
                       <button
                         onClick={handleServiceAreasClick}
@@ -139,26 +200,30 @@ export default function Header() {
                         </svg>
                       </button>
                     )}
-                    {openDropdown === item.name && (
-                      <div className="absolute top-full left-0 mt-2 w-40 sm:w-44 md:w-48 bg-black border border-gray-800 rounded-lg shadow-lg py-2 z-50">
-                        <a
-                          href={`${item.href}-1`}
-                          className="block px-4 py-2 text-white hover:bg-gray-900 hover:text-[#C1FF72] transition-colors text-sm"
-                        >
-                          1
-                        </a>
-                        <a
-                          href={`${item.href}-2`}
-                          className="block px-4 py-2 text-white hover:bg-gray-900 hover:text-[#C1FF72] transition-colors text-sm"
-                        >
-                          2
-                        </a>
-                        <a
-                          href={`${item.href}-3`}
-                          className="block px-4 py-2 text-white hover:bg-gray-900 hover:text-[#C1FF72] transition-colors text-sm"
-                        >
-                          3
-                        </a>
+                    {openDropdown === item.name && item.name !== "Services" && (
+                      <div 
+                        className={`absolute top-full left-0 mt-2 bg-black border border-gray-800 rounded-lg shadow-lg py-2 z-50 w-40 sm:w-44 md:w-48`}
+                      >
+                        <>
+                          <a
+                            href={`${item.href}-1`}
+                            className="block px-4 py-2 text-white hover:bg-gray-900 hover:text-[#C1FF72] transition-colors text-sm"
+                          >
+                            1
+                          </a>
+                          <a
+                            href={`${item.href}-2`}
+                            className="block px-4 py-2 text-white hover:bg-gray-900 hover:text-[#C1FF72] transition-colors text-sm"
+                          >
+                            2
+                          </a>
+                          <a
+                            href={`${item.href}-3`}
+                            className="block px-4 py-2 text-white hover:bg-gray-900 hover:text-[#C1FF72] transition-colors text-sm"
+                          >
+                            3
+                          </a>
+                        </>
                       </div>
                     )}
                   </>
@@ -233,14 +298,7 @@ export default function Header() {
                     <>
                       {item.name === "Services" ? (
                         <button
-                          onClick={(e) => {
-                            e.preventDefault();
-                            if (pathname !== "/services") {
-                              router.push("/services");
-                            } else {
-                              toggleDropdown(item.name);
-                            }
-                          }}
+                          onClick={() => toggleDropdown(item.name)}
                           className="w-full flex items-center justify-between px-3 sm:px-4 py-2 sm:py-2.5 text-white hover:text-[#C1FF72] hover:bg-gray-900 transition-all text-xs sm:text-sm rounded"
                         >
                           {item.name}
@@ -314,27 +372,45 @@ export default function Header() {
                       )}
                       {openDropdown === item.name && (
                         <div className="pl-3 sm:pl-4 space-y-0.5 sm:space-y-1">
-                          <a
-                            href={`${item.href}-1`}
-                            className="block px-3 sm:px-4 py-1.5 sm:py-2 text-gray-300 hover:text-[#C1FF72] hover:bg-gray-900 transition-all text-xs sm:text-sm rounded"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                          >
-                            1
-                          </a>
-                          <a
-                            href={`${item.href}-2`}
-                            className="block px-3 sm:px-4 py-1.5 sm:py-2 text-gray-300 hover:text-[#C1FF72] hover:bg-gray-900 transition-all text-xs sm:text-sm rounded"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                          >
-                            2
-                          </a>
-                          <a
-                            href={`${item.href}-3`}
-                            className="block px-3 sm:px-4 py-1.5 sm:py-2 text-gray-300 hover:text-[#C1FF72] hover:bg-gray-900 transition-all text-xs sm:text-sm rounded"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                          >
-                            3
-                          </a>
+                          {item.name === "Services" ? (
+                            services.map((service, index) => (
+                              <Link
+                                key={index}
+                                href={service.href}
+                                className="block px-3 sm:px-4 py-1.5 sm:py-2 text-gray-300 hover:text-[#C1FF72] hover:bg-gray-900 transition-all text-xs sm:text-sm rounded"
+                                onClick={() => {
+                                  setIsMobileMenuOpen(false);
+                                  setOpenDropdown(null);
+                                }}
+                              >
+                                {service.name}
+                              </Link>
+                            ))
+                          ) : (
+                            <>
+                              <a
+                                href={`${item.href}-1`}
+                                className="block px-3 sm:px-4 py-1.5 sm:py-2 text-gray-300 hover:text-[#C1FF72] hover:bg-gray-900 transition-all text-xs sm:text-sm rounded"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                              >
+                                1
+                              </a>
+                              <a
+                                href={`${item.href}-2`}
+                                className="block px-3 sm:px-4 py-1.5 sm:py-2 text-gray-300 hover:text-[#C1FF72] hover:bg-gray-900 transition-all text-xs sm:text-sm rounded"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                              >
+                                2
+                              </a>
+                              <a
+                                href={`${item.href}-3`}
+                                className="block px-3 sm:px-4 py-1.5 sm:py-2 text-gray-300 hover:text-[#C1FF72] hover:bg-gray-900 transition-all text-xs sm:text-sm rounded"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                              >
+                                3
+                              </a>
+                            </>
+                          )}
                         </div>
                       )}
                     </>

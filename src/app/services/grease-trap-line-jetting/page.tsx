@@ -6,17 +6,17 @@ import ServicesArea from "@/components/Services/ServicesArea";
 import Footer from "@/components/Footer/Footer";
 import ServiceSchedule from "@/components/Services/ServiceSchedule";
 
-export default function ServicesPage() {
+export default function GreaseTrapLineJettingPage() {
   return (
     <div className="relative h-auto">
       {/* Navbar */}
       <Navbar />
       
       {/* Services Header */}
-      <ServicesHeader title="Services" />
+      <ServicesHeader title="Grease trap and Line jetting services" />
       
       {/* Qwick Services Section */}
-      <QwickServices />
+      <QwickServices serviceSlug="grease-trap-line-jetting" />
 
       {/* Kitchen Maintenance Section */}
       <KitchenMaintenance />

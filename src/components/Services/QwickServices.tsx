@@ -1,7 +1,15 @@
 import React from 'react';
 import Image from 'next/image';
+import { servicesContent } from './servicesContent';
 
-export default function QwickServices() {
+interface QwickServicesProps {
+    serviceSlug?: string;
+}
+
+export default function QwickServices({ serviceSlug = "default" }: QwickServicesProps) {
+    // Get content for the service, fallback to default if not found
+    const content = servicesContent[serviceSlug] || servicesContent["default"];
+    const { mainHeading, subHeading, paragraphs } = content;
     return (
         <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white w-full h-auto">
             <div className="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl w-full h-auto mb-40">
@@ -13,7 +21,7 @@ export default function QwickServices() {
                             data-animate
                             className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold text-gray-800 leading-tight tracking-wide"
                         >
-                            Qwick Services and Solutions LLC provides inspection, testing, and maintenance for commercial kitchen fire suppression systems so they activate quickly and reliably when you need them most.
+                            {mainHeading}
                         </h1>
                     </div>
                 </div>
@@ -29,9 +37,8 @@ export default function QwickServices() {
                                 className="text-xl sm:text-2xl md:text-3xl lg:text-[42px] font-bold"
                             >
                                 <span className="bg-gradient-to-r from-[#A9FF3E] to-black bg-clip-text text-transparent">
-                                    Get Full services of Fire
-                                </span>{' '}
-                                <span className="text-gray-800">Suppression Service</span>
+                                    {subHeading.gradientText}
+                                </span>
                             </h2>
 
                             {/* Paragraphs */}
@@ -39,12 +46,11 @@ export default function QwickServices() {
                                 data-animate
                                 className="space-y-4 sm:space-y-5 text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed"
                             >
-                                <p>
-                                    Kitchen fire suppression systems are your last line of defense when a flare‑up or grease fire occurs on the cooking line. Our certified technicians perform routine inspections to verify that nozzles are correctly aimed, fusible links and detection lines are in good condition, and cylinders are properly pressurized and within code date ranges. We review your system against manufacturer specifications and NFPA standards, making adjustments or recommendations where coverage has changed due to new appliances or layout shifts.
-                                </p>
-                                <p>
-                                    When required, we perform system tests to verify proper detection and discharge, ensuring that shut‑offs and interlocks for gas and electric equipment function as designed. If deficiencies are found, Qwick Services and Solutions LLC can repair, recharge, or coordinate replacement components to restore your system to full readiness. Upon completion, you receive updated tags, documentation, and clear notes you can present to your fire marshal, insurer, and corporate safety team
-                                </p>
+                                {paragraphs.map((paragraph, index) => (
+                                    <p key={index}>
+                                        {paragraph}
+                                    </p>
+                                ))}
                             </div>
                         </div>
                     </div>

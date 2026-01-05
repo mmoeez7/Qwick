@@ -12,31 +12,31 @@ export default function Customers() {
       name: "Scott K.",
       role: "Cloud Kitchen Operator, Dubai",
       testimonial: "It's like having a professional service team that understands our needs perfectly, but better tailored for our region.",
-      avatar: "/customers/Testimonial.svg"
+      avatar: "/Home/Customers/Scott.jpg"
     },
     {
       name: "Maya Patel",
       role: "Franchise Group, Qatar",
       testimonial: "We onboarded 12 branches in under 3 weeks with full control and excellent service quality throughout.",
-      avatar: "/customers/Testimonial.svg"    
+      avatar: "/Home/Customers/Maya.png"    
     },
     {
       name: "Alena Oliver",
       role: "Engineering Manager, Replit",
       testimonial: "The single most impressive thing about Qwick is how fast they respond. At times we've reported an issue or service request and they fixed it within 10-15 minutes.",
-      avatar: "/customers/Testimonial.svg"
+      avatar: "/Home/Customers/Alena.png"
     },
     {
       name: "Alex Rivera",
       role: "Cyber Security Expert",
       testimonial: "The single most impressive thing about Qwick is how fast they respond. At times we've reported an issue or service request and they fixed it within 10-15 minutes.",
-      avatar: "/customers/Testimonial.svg"
+      avatar: "/Home/Customers/Alex.png"
     },
     {
       name: "David Kim",
       role: "HR Director at Catalyst Industries",
       testimonial: "The single most impressive thing about Qwick is how fast they respond. At times we've reported an issue or service request and they fixed it within 10-15 minutes.",
-      avatar: "/customers/Testimonial.svg"
+      avatar: "/Home/Customers/David.png"
     },
   ];
 

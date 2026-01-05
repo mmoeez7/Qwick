@@ -1,6 +1,10 @@
 import Image from "next/image";
 
-export default function ServicesHeader() {
+interface ServicesHeaderProps {
+  title: string;
+}
+
+export default function ServicesHeader({ title }: ServicesHeaderProps) {
   return (
     <div className="relative z-10 flex flex-col items-start mt-16 sm:mt-20 justify-center h-[50dvh] px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 pb-12 sm:pb-16">
       {/* Background Image with Overlay */}
@@ -17,9 +21,7 @@ export default function ServicesHeader() {
           data-animate
           className="font-bold text-white mb-2 sm:mb-4 leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-[60px]"
         >
-          Grease trap and Line jetting
-          <br />
-          services
+          {title}
         </h1>
       </div>
     </div>
