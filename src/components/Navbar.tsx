@@ -60,7 +60,7 @@ export default function Header() {
     { name: "Services", href: "#services", hasDropdown: true },
     { name: "Service Areas", href: "#service-areas", hasDropdown: true },
     { name: "About", href: "#about", hasDropdown: true },
-    { name: "Contact", href: "#contact", hasDropdown: true },
+    { name: "Contact", href: "/contact", hasDropdown: false },
   ];
 
   // Close dropdown when clicking outside

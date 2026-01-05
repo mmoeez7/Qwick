@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import Logo from "../Home/Hero/Logo";
 
 export default function Footer() {
@@ -218,18 +219,18 @@ export default function Footer() {
               © 2025 Qwick Services & Solutions. All rights reserved.
             </p>
             <div className="flex items-center gap-6">
-              <a
-                href="#"
+              <Link
+                href="/privacy-policy"
                 className="text-sm sm:text-base text-gray-400 hover:text-[#C1FF72] transition-colors"
               >
                 Privacy Policy
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                href="/terms-and-conditions"
                 className="text-sm sm:text-base text-gray-400 hover:text-[#C1FF72] transition-colors"
               >
                 Terms of Services
-              </a>
+              </Link>
             </div>
           </div>
         </div>
