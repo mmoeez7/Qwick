@@ -3,7 +3,25 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
-export default function WhatQwickCanDoSection() {
+interface Slide {
+    icon?: string;
+    title: string;
+    subtitle: string;
+    description: string;
+    bgColor?: string;
+}
+
+interface WhatQwickCanDoSectionProps {
+    slides?: Slide[];
+    title?: string;
+    subtitle?: string;
+}
+
+export default function WhatQwickCanDoSection({ 
+    slides: customSlides, 
+    title: customTitle,
+    subtitle: customSubtitle 
+}: WhatQwickCanDoSectionProps = {}) {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
@@ -21,7 +39,7 @@ export default function WhatQwickCanDoSection() {
         return () => window.removeEventListener('resize', checkScreenSize);
     }, []);
 
-    const slides = [
+    const defaultSlides: Slide[] = [
         {
             icon: "/Home/serviceSection/icon1.svg",
             title: "Fire Suppression",
@@ -42,8 +60,33 @@ export default function WhatQwickCanDoSection() {
             subtitle: "kit Installation",
             description: "If We Can't Reach It, We Can't Clean It. A kitchen exhaust system is only as safe as its most inaccessible point",
             bgColor: "bg-[#E6FFC7]"
+        },
+        {
+            icon: "/Home/serviceSection/icon3.svg",
+            title: "Hood & Duct Cleaning",
+            subtitle: "kit Installation",
+            description: "Deep cleaning of hood interiors, plenum areas, and ductwork to improve airflow, reduce fire risk, and support smoother inspections.",
+            bgColor: "bg-[#E6FFC7]"
+        },
+        {
+            icon: "/Home/serviceSection/icon3.svg",
+            title: "Access Panel and Hinge",
+            subtitle: "kit Installation",
+            description: "If We Can't Reach It, We Can't Clean It. A kitchen exhaust system is only as safe as its most inaccessible point",
+            bgColor: "bg-[#E6FFC7]"
+        },
+        {
+            icon: "/Home/serviceSection/icon3.svg",
+            title: "Access Panel and Hinge",
+            subtitle: "kit Installation",
+            description: "If We Can't Reach It, We Can't Clean It. A kitchen exhaust system is only as safe as its most inaccessible point",
+            bgColor: "bg-[#E6FFC7]"
         }
     ];
+
+    const slides = customSlides || defaultSlides;
+    const sectionTitle = customTitle || "What Qwick Can Do For You";
+    const sectionSubtitle = customSubtitle || "End-to-End Solutions for Your Commercial Kitchen";
 
     const nextSlide = () => {
         setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -72,11 +115,11 @@ export default function WhatQwickCanDoSection() {
                     <h1 className="text-4xl md:text-5xl font-bold 
                bg-gradient-to-r from-[#A9FF3E] to-white 
                bg-clip-text text-transparent">
-                        What Qwick Can Do For You
+                        {sectionTitle}
                     </h1>
 
                     <p className="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed mt-5">
-                        End-to-End Solutions for Your Commercial Kitchen
+                        {sectionSubtitle}
                     </p>
                 </div>
 
@@ -186,7 +229,7 @@ export default function WhatQwickCanDoSection() {
                                         }}
                                     >
                                         <div
-                                            className={`relative ${slide.bgColor} rounded-lg sm:rounded-xl shadow-lg h-full ${
+                                            className={`relative ${slide.bgColor || "bg-[#E6FFC7]"} rounded-lg sm:rounded-xl shadow-lg h-full ${
                                                 isActive 
                                                     ? 'p-6 sm:p-8 md:p-10 lg:p-12' 
                                                     : 'p-4 sm:p-6 md:p-8'

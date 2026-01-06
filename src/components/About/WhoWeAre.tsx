@@ -18,7 +18,7 @@ export default function WhoWeAre() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-start">
           {/* Left Column - Heading (Stacked Vertically) */}
           <div className="flex flex-col lg:col-span-1">
-            <h2 
+            <h2
               data-animate
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6 sm:mb-8"
             >
@@ -30,17 +30,17 @@ export default function WhoWeAre() {
 
           {/* Right Column - Content */}
           <div className="space-y-4 sm:space-y-5 md:space-y-6 lg:col-span-2">
-            <p 
+            <p
               data-animate
               className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 leading-relaxed"
             >
-              <strong className="text-gray-900">Qwick Services and Solutions LLC</strong> is a commercial kitchen exhaust and fire safety company. We keep restaurants, hotels, and commercial kitchens clean, safe, and code-compliant.
+              Qwick Services and Solutions LLC is a commercial kitchen exhaust and fire safety company dedicated to keeping restaurants, hotels, and commercial kitchens clean, safe, and code‑compliant. Every visit is performed by trained technicians who understand the real-world pressures of running a busy kitchen and the importance of passing inspections the first time.
             </p>
-            <p 
+            <p
               data-animate
               className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 leading-relaxed"
             >
-              Every visit is performed by trained technicians who understand the pressures of busy kitchens and the importance of passing inspections. We were founded to be a reliable, NFPA-focused partner, combining technical expertise with clear communication, photo documentation, and predictable scheduling to reduce fire risk, support staff, and keep businesses operational.
+              Founded to give operators a reliable, NFPA‑focused partner, Qwick Services and Solutions LLC combines technical expertise with clear communication, photo documentation, and predictable scheduling. The result is a service experience that reduces fire risk, supports your staff, and keeps your doors open.
             </p>
           </div>
         </div>

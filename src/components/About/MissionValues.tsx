@@ -1,38 +1,20 @@
+import Image from "next/image";
+
 export default function MissionValues() {
   const values = [
     {
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-        </svg>
-      ),
       title: "Safety first",
       description: "Every recommendation and service is grounded in fire code, NFPA 96 standards, and best practices for commercial cooking operations."
     },
     {
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      ),
       title: "Reliability:",
       description: "On-time arrivals, clear scopes of work, and consistent quality from visit to visit—whether you operate a single location or a multi-unit group"
     },
     {
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-        </svg>
-      ),
       title: "Transparency",
       description: "Before-and-after photos, detailed reports, and clear notes so you always know what was done, why it mattered, and what is due next."
     },
     {
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-        </svg>
-      ),
       title: "Respect for your operation",
       description: "Night and off-hours scheduling, careful masking and cleanup, and technicians who treat your kitchen like their own workplace."
     }
@@ -71,10 +53,16 @@ export default function MissionValues() {
               data-animate
               className="bg-gray-100 rounded-lg p-6 sm:p-8"
             >
-              <div className="flex items-start gap-4">
+              <div className="flex flex-col items-start gap-4">
                 {/* Icon */}
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-lg bg-[#A9FF3E] flex items-center justify-center flex-shrink-0 text-white">
-                  {value.icon}
+                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-lg bg-[#A9FF3E] flex items-center justify-center flex-shrink-0">
+                  <Image
+                    src="/About/comment.svg"
+                    alt={value.title}
+                    width={24}
+                    height={24}
+                    className="w-6 h-6 sm:w-7 sm:h-7"
+                  />
                 </div>
 
                 {/* Content */}
