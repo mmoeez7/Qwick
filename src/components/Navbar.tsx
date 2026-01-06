@@ -59,7 +59,7 @@ export default function Header() {
     { name: "Home", href: "#home", hasDropdown: false },
     { name: "Services", href: "#services", hasDropdown: true },
     { name: "Service Areas", href: "#service-areas", hasDropdown: true },
-    { name: "About", href: "#about", hasDropdown: true },
+    { name: "About", href: "/about", hasDropdown: false },
     { name: "Contact", href: "/contact", hasDropdown: false },
   ];
 
@@ -102,7 +102,7 @@ export default function Header() {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-3 lg:gap-5 xl:gap-6 2xl:gap-8">
+          <nav className="hidden lg:flex items-center gap-3 lg:gap-5 xl:gap-6 2xl:gap-8">
             {navItems.map((item) => (
               <div 
                 key={item.name} 
@@ -252,7 +252,7 @@ export default function Header() {
             {/* Hamburger Menu Button */}
             <button
               onClick={toggleMobileMenu}
-              className="md:hidden text-white p-1.5 sm:p-2 hover:bg-gray-900 rounded transition-colors"
+              className="lg:hidden text-white p-1.5 sm:p-2 hover:bg-gray-900 rounded transition-colors"
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? (
@@ -289,9 +289,14 @@ export default function Header() {
         </div>
 
         {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden border-t border-gray-800 bg-black">
-            <nav className="py-3 sm:py-4 space-y-1 sm:space-y-2 max-h-[calc(100vh-4rem)] overflow-y-auto">
+        <div 
+          className={`lg:hidden border-t border-gray-800 bg-black overflow-hidden transition-all duration-300 ease-in-out ${
+            isMobileMenuOpen 
+              ? 'max-h-[calc(100vh-4rem)] opacity-100' 
+              : 'max-h-0 opacity-0'
+          }`}
+        >
+          <nav className="py-3 sm:py-4 space-y-1 sm:space-y-2 overflow-y-auto">
               {navItems.map((item) => (
                 <div key={item.name}>
                   {item.hasDropdown ? (
@@ -299,12 +304,12 @@ export default function Header() {
                       {item.name === "Services" ? (
                         <button
                           onClick={() => toggleDropdown(item.name)}
-                          className="w-full flex items-center justify-between px-3 sm:px-4 py-2 sm:py-2.5 text-white hover:text-[#C1FF72] hover:bg-gray-900 transition-all text-xs sm:text-sm rounded"
+                          className="w-full flex items-center justify-between px-3 sm:px-4 py-2 sm:py-2.5 text-white hover:text-[#C1FF72] hover:bg-gray-900 active:bg-gray-800 transition-all duration-200 text-xs sm:text-sm rounded"
                         >
                           {item.name}
                           <svg
-                            className={`w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform ${
-                              openDropdown === item.name ? "rotate-180" : ""
+                            className={`w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform duration-300 ease-in-out ${
+                              openDropdown === item.name ? "rotate-180" : "rotate-0"
                             }`}
                             fill="none"
                             stroke="currentColor"
@@ -328,12 +333,12 @@ export default function Header() {
                               toggleDropdown(item.name);
                             }
                           }}
-                          className="w-full flex items-center justify-between px-3 sm:px-4 py-2 sm:py-2.5 text-white hover:text-[#C1FF72] hover:bg-gray-900 transition-all text-xs sm:text-sm rounded"
+                          className="w-full flex items-center justify-between px-3 sm:px-4 py-2 sm:py-2.5 text-white hover:text-[#C1FF72] hover:bg-gray-900 active:bg-gray-800 transition-all duration-200 text-xs sm:text-sm rounded"
                         >
                           {item.name}
                           <svg
-                            className={`w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform ${
-                              openDropdown === item.name ? "rotate-180" : ""
+                            className={`w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform duration-300 ease-in-out ${
+                              openDropdown === item.name ? "rotate-180" : "rotate-0"
                             }`}
                             fill="none"
                             stroke="currentColor"
@@ -350,12 +355,12 @@ export default function Header() {
                       ) : (
                         <button
                           onClick={() => toggleDropdown(item.name)}
-                          className="w-full flex items-center justify-between px-3 sm:px-4 py-2 sm:py-2.5 text-white hover:text-[#C1FF72] hover:bg-gray-900 transition-all text-xs sm:text-sm rounded"
+                          className="w-full flex items-center justify-between px-3 sm:px-4 py-2 sm:py-2.5 text-white hover:text-[#C1FF72] hover:bg-gray-900 active:bg-gray-800 transition-all duration-200 text-xs sm:text-sm rounded"
                         >
                           {item.name}
                           <svg
-                            className={`w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform ${
-                              openDropdown === item.name ? "rotate-180" : ""
+                            className={`w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform duration-300 ease-in-out ${
+                              openDropdown === item.name ? "rotate-180" : "rotate-0"
                             }`}
                             fill="none"
                             stroke="currentColor"
@@ -370,14 +375,19 @@ export default function Header() {
                           </svg>
                         </button>
                       )}
-                      {openDropdown === item.name && (
-                        <div className="pl-3 sm:pl-4 space-y-0.5 sm:space-y-1">
+                      <div 
+                        className={`pl-3 sm:pl-4 space-y-0.5 sm:space-y-1 overflow-hidden transition-all duration-300 ease-in-out ${
+                          openDropdown === item.name 
+                            ? 'max-h-[500px] opacity-100 mt-1' 
+                            : 'max-h-0 opacity-0 mt-0'
+                        }`}
+                      >
                           {item.name === "Services" ? (
                             services.map((service, index) => (
                               <Link
                                 key={index}
                                 href={service.href}
-                                className="block px-3 sm:px-4 py-1.5 sm:py-2 text-gray-300 hover:text-[#C1FF72] hover:bg-gray-900 transition-all text-xs sm:text-sm rounded"
+                                className="block px-3 sm:px-4 py-1.5 sm:py-2 text-gray-300 hover:text-[#C1FF72] hover:bg-gray-900 active:bg-gray-800 transition-all duration-200 text-xs sm:text-sm rounded"
                                 onClick={() => {
                                   setIsMobileMenuOpen(false);
                                   setOpenDropdown(null);
@@ -390,34 +400,33 @@ export default function Header() {
                             <>
                               <a
                                 href={`${item.href}-1`}
-                                className="block px-3 sm:px-4 py-1.5 sm:py-2 text-gray-300 hover:text-[#C1FF72] hover:bg-gray-900 transition-all text-xs sm:text-sm rounded"
+                                className="block px-3 sm:px-4 py-1.5 sm:py-2 text-gray-300 hover:text-[#C1FF72] hover:bg-gray-900 active:bg-gray-800 transition-all duration-200 text-xs sm:text-sm rounded"
                                 onClick={() => setIsMobileMenuOpen(false)}
                               >
                                 1
                               </a>
                               <a
                                 href={`${item.href}-2`}
-                                className="block px-3 sm:px-4 py-1.5 sm:py-2 text-gray-300 hover:text-[#C1FF72] hover:bg-gray-900 transition-all text-xs sm:text-sm rounded"
+                                className="block px-3 sm:px-4 py-1.5 sm:py-2 text-gray-300 hover:text-[#C1FF72] hover:bg-gray-900 active:bg-gray-800 transition-all duration-200 text-xs sm:text-sm rounded"
                                 onClick={() => setIsMobileMenuOpen(false)}
                               >
                                 2
                               </a>
                               <a
                                 href={`${item.href}-3`}
-                                className="block px-3 sm:px-4 py-1.5 sm:py-2 text-gray-300 hover:text-[#C1FF72] hover:bg-gray-900 transition-all text-xs sm:text-sm rounded"
+                                className="block px-3 sm:px-4 py-1.5 sm:py-2 text-gray-300 hover:text-[#C1FF72] hover:bg-gray-900 active:bg-gray-800 transition-all duration-200 text-xs sm:text-sm rounded"
                                 onClick={() => setIsMobileMenuOpen(false)}
                               >
                                 3
                               </a>
                             </>
                           )}
-                        </div>
-                      )}
+                      </div>
                     </>
                   ) : (
                     <Link
                       href={item.href === "#home" ? "/" : item.href}
-                      className="block px-3 sm:px-4 py-2 sm:py-2.5 text-white hover:text-[#C1FF72] hover:bg-gray-900 transition-all text-xs sm:text-sm rounded"
+                      className="block px-3 sm:px-4 py-2 sm:py-2.5 text-white hover:text-[#C1FF72] hover:bg-gray-900 active:bg-gray-800 transition-all duration-200 text-xs sm:text-sm rounded"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {item.name}
@@ -426,13 +435,12 @@ export default function Header() {
                 </div>
               ))}
               <div className="pt-3 sm:pt-4 border-t border-gray-800 px-3 sm:px-4 mt-2">
-                <button className="w-full text-xs sm:text-sm bg-black border border-white text-white px-3 sm:px-4 py-2 sm:py-2.5 rounded-4xl font-semibold hover:bg-white hover:text-black transition-colors">
+                <button className="w-full text-xs sm:text-sm bg-black border border-white text-white px-3 sm:px-4 py-2 sm:py-2.5 rounded-4xl font-semibold hover:bg-white hover:text-black active:bg-gray-100 transition-all duration-200">
                   Get a Quote
                 </button>
               </div>
             </nav>
-          </div>
-        )}
+        </div>
       </div>
     </header>
   );
