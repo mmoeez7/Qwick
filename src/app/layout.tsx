@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import SmoothScrollProvider from "@/components/SmoothScroll";
 import SplashScreen from "@/components/SplashScreen";
+import FloatingContactButton from "@/components/FloatingContactButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,6 +37,7 @@ export default function RootLayout({
       >
         <SplashScreen />
         <SmoothScrollProvider />
+        <FloatingContactButton />
         {children}
       </body>
     </html>
