@@ -38,8 +38,15 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
       if (onSubmit) {
         await onSubmit(formData);
       } else {
-        // Default submission handler
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+        const res = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        });
+
+        if (!res.ok) {
+          throw new Error("Failed to send");
+        }
       }
       setSubmitStatus("success");
       setFormData({
@@ -217,9 +224,6 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
               className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#A9FF3E] focus:ring-1 focus:ring-[#A9FF3E] transition-colors"
               placeholder="Your Business Name"
             />
-            <div className="absolute right-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-yellow-400 flex items-center justify-center">
-              <span className="text-xs font-bold text-black">A</span>
-            </div>
           </div>
         </div>
 
