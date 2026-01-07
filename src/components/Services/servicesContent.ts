@@ -69,7 +69,7 @@ export const servicesContent: Record<string, ServiceContent> = {
 
   // Pollution Control Unit (PCU) Service
   "pollution-control-unit": {
-    mainHeading: "Standard hood cleaning is not enough for modern Pollution Control Units. These sophisticated systems require specialized maintenance to effectively remove grease, smoke, and odors before air is released into the environment. <br/> Qwick Solutions provides expert servicing for multi‑stage filtration systems—including units from CaptiveAire, Halton, Accurex, and other leading manufacturers—so your PCU continues to perform as designed. Whether you use  electrostatic Precipitators (ESP) or media‑based filtration, our technicians are trained to keep your equipment efficient, compliant, and protected.",
+    mainHeading: "Standard hood cleaning is not enough for modern Pollution Control Units. These sophisticated systems require specialized maintenance to effectively remove grease, smoke, and odors before air is released into the environment. Qwick Solutions provides expert servicing for multi‑stage filtration systems—including units from CaptiveAire, Halton, Accurex, and other leading manufacturers—so your PCU continues to perform as designed. Whether you use  electrostatic Precipitators (ESP) or media‑based filtration, our technicians are trained to keep your equipment efficient, compliant, and protected.",
     subHeading: {
       gradientText: "Why PCU Maintenance Matters",
     },

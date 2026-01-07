@@ -1,12 +1,12 @@
 import ServicesHeader from "@/components/Services/ServicesHeader";
 import Navbar from "@/components/Navbar";
 import QwickServices from "@/components/Services/QwickServices";
-import KitchenMaintenance from "@/components/Services/KitchenMaintenance";
 import ServicesArea from "@/components/Services/ServicesArea";
 import Footer from "@/components/Footer/Footer";
 import ServiceSchedule from "@/components/Services/ServiceSchedule";
 import ServiceFeatures from "@/components/Services/ServiceFeatures";
 import EquipmentServices from "@/components/Services/EquipmentServices";
+import PCUBenefits from "@/components/Services/PCUBenefits";
 
 export default function PollutionControlUnitPage() {
   return (
@@ -52,6 +52,7 @@ export default function PollutionControlUnitPage() {
         ]}
       />
 
+
       {/* Equipment Services Section */}
       <EquipmentServices
         heading={{
@@ -87,14 +88,20 @@ export default function PollutionControlUnitPage() {
         disclaimer="If your unit is not listed, our team can review the model documentation and develop a maintenance plan consistent with manufacturer guidance"
       />
 
-      {/* Kitchen Maintenance Section */}
-      <KitchenMaintenance />
+      {/* PCU Benefits Section */}
+      <PCUBenefits />
 
       {/* Services Area Section */}
       <ServicesArea />
 
       {/* Service Schedule Section */}
-      <ServiceSchedule />       
+      <ServiceSchedule 
+        description={[
+          "Protect your Pollution Control Unit, fans, and reputation with a PCU maintenance program built around your equipment and hours of operation",
+          "Use our Get a Quote page to tell us about your PCU model, location, and cooking volume—or call 202-643-8113 to discuss ESP cell cleaning, filter changes, and diagnostics with a technician."
+        ]}
+        phoneNumber="202-643-8113"
+      />       
 
       {/* Footer */}
       <Footer />

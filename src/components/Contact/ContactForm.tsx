@@ -62,13 +62,16 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
 
   return (
     <div className="space-y-6">
-      <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
+      <p 
+        data-animate
+        className="text-base sm:text-lg text-gray-700 leading-relaxed"
+      >
         Use the form below to tell us about your kitchen, or reach out by phone or email if you prefer to talk directly with a member of our team.
       </p>
       
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Full Name */}
-        <div>
+        <div data-animate>
           <label htmlFor="name" className="block text-sm font-medium text-gray-900 mb-2">
             Full Name
           </label>
@@ -85,7 +88,7 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
         </div>
 
         {/* Email and Phone Number in a row */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div data-animate className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {/* Email */}
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-900 mb-2">
@@ -136,7 +139,7 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
         </div>
 
         {/* Location - City and State in a row */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div data-animate className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {/* Location - City */}
           <div>
             <label htmlFor="city" className="block text-sm font-medium text-gray-900 mb-2">
@@ -183,7 +186,7 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
         </div>
 
         {/* How can we help? */}
-        <div>
+        <div data-animate>
           <label htmlFor="message" className="block text-sm font-medium text-gray-900 mb-2">
             How can we help?
           </label>
@@ -200,7 +203,7 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
         </div>
 
         {/* Business / Organization Name */}
-        <div>
+        <div data-animate>
           <label htmlFor="businessName" className="block text-sm font-medium text-gray-900 mb-2">
             Business / Organization Name
           </label>
@@ -221,7 +224,7 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
         </div>
 
         {/* How soon do you need service? */}
-        <div>
+        <div data-animate>
           <label htmlFor="serviceUrgency" className="block text-sm font-medium text-gray-900 mb-2">
             How soon do you need service?
           </label>
@@ -240,7 +243,7 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
         </div>
 
         {/* Submit Button */}
-        <div className="flex justify-end">
+        <div data-animate className="flex justify-end">
           <button
             type="submit"
             disabled={isSubmitting}
@@ -252,12 +255,18 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
 
         {/* Status Messages */}
         {submitStatus === "success" && (
-          <div className="p-4 bg-green-50 border border-green-200 rounded-lg text-green-800">
+          <div 
+            data-animate
+            className="p-4 bg-green-50 border border-green-200 rounded-lg text-green-800"
+          >
             Thank you! Your message has been sent successfully. We'll get back to you soon.
           </div>
         )}
         {submitStatus === "error" && (
-          <div className="p-4 bg-red-50 border border-red-200 rounded-lg text-red-800">
+          <div 
+            data-animate
+            className="p-4 bg-red-50 border border-red-200 rounded-lg text-red-800"
+          >
             Something went wrong. Please try again or contact us directly.
           </div>
         )}

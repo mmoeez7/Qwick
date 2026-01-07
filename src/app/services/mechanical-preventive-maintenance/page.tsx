@@ -1,10 +1,11 @@
 import ServicesHeader from "@/components/Services/ServicesHeader";
 import Navbar from "@/components/Navbar";
 import QwickServices from "@/components/Services/QwickServices";
-import KitchenMaintenance from "@/components/Services/KitchenMaintenance";
 import ServicesArea from "@/components/Services/ServicesArea";
 import Footer from "@/components/Footer/Footer";
 import ServiceSchedule from "@/components/Services/ServiceSchedule";
+import VentilationProblems from "@/components/Services/VentilationProblems";
+import MechanicalServices from "@/components/Services/MechanicalServices";
 
 export default function MechanicalPreventiveMaintenancePage() {
   return (
@@ -18,8 +19,11 @@ export default function MechanicalPreventiveMaintenancePage() {
       {/* Qwick Services Section */}
       <QwickServices serviceSlug="mechanical-preventive-maintenance" />
 
-      {/* Kitchen Maintenance Section */}
-      <KitchenMaintenance />
+      {/* Mechanical Services Section */}
+      <MechanicalServices />
+
+      {/* Ventilation Problems Section */}
+      <VentilationProblems imageSrc="/Services/PCU.png" />
 
       {/* Services Area Section */}
       <ServicesArea />

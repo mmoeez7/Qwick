@@ -3,14 +3,11 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
 import Logo from "./Home/Hero/Logo";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-  const pathname = usePathname();
-  const router = useRouter();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const toggleMobileMenu = () => {
@@ -34,16 +31,6 @@ export default function Header() {
     }, 200);
   };
 
-  const handleServiceAreasClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    if (pathname !== "/serviceArea") {
-      // Navigate to service area page
-      router.push("/serviceArea");
-    } else {
-      // If already on service area page, just toggle dropdown
-      toggleDropdown("Service Areas");
-    }
-  };
 
   const services = [
     { name: "Commercial Hood Cleaning & NFPA 96 Compliance", href: "/services/commercial-hood-cleaning", slug: "commercial-hood-cleaning" },
@@ -58,7 +45,7 @@ export default function Header() {
   const navItems = [
     { name: "Home", href: "#home", hasDropdown: false },
     { name: "Services", href: "#services", hasDropdown: true },
-    { name: "Service Areas", href: "#service-areas", hasDropdown: true },
+    { name: "Service Areas", href: "/serviceArea", hasDropdown: false },
     { name: "About", href: "/about", hasDropdown: false },
     { name: "Contact", href: "/contact", hasDropdown: false },
   ];
@@ -90,7 +77,7 @@ export default function Header() {
       <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14 sm:h-16 md:h-20 lg:h-20">
           {/* Logo */}
-          <div className="flex items-center gap-1 sm:gap-2">
+          <Link href="/" className="flex items-center gap-1 sm:gap-2 hover:opacity-80 transition-opacity">
             <Logo />
             <Image 
               src="/Home/hero/Navbar-Logo.svg" 
@@ -99,14 +86,14 @@ export default function Header() {
               height={38}
               className="h-5 sm:h-6 md:h-7 lg:h-8 xl:h-9 w-auto hidden sm:block"
             />
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-3 lg:gap-5 xl:gap-6 2xl:gap-8">
             {navItems.map((item) => (
               <div 
                 key={item.name} 
-                ref={item.hasDropdown && openDropdown === item.name && item.name !== "Services" ? dropdownRef : null} 
+                ref={item.hasDropdown && openDropdown === item.name && item.name === "Services" ? dropdownRef : null} 
                 className="relative group"
               >
                 {item.hasDropdown ? (
@@ -119,7 +106,7 @@ export default function Header() {
                         className="relative"
                       >
                         <button
-                          className="text-white hover:text-[#C1FF72] transition-colors text-xs sm:text-sm flex items-center gap-1 whitespace-nowrap"
+                          className="text-white hover:text-[#C1FF72] transition-colors text-sm sm:text-base flex items-center gap-1 whitespace-nowrap"
                         >
                           {item.name}
                           <svg
@@ -146,7 +133,7 @@ export default function Header() {
                               <Link
                                 key={index}
                                 href={service.href}
-                                className="block px-4 py-2 text-white hover:bg-gray-900 hover:text-[#C1FF72] transition-colors text-sm"
+                                className="block px-4 py-2 text-white hover:bg-gray-900 hover:text-[#C1FF72] transition-colors text-base"
                                 onClick={() => setOpenDropdown(null)}
                               >
                                 {service.name}
@@ -155,32 +142,10 @@ export default function Header() {
                           </div>
                         )}
                       </div>
-                    ) : item.name === "Service Areas" ? (
-                      <button
-                        onClick={handleServiceAreasClick}
-                        className="text-white hover:text-[#C1FF72] transition-colors text-xs sm:text-sm flex items-center gap-1 whitespace-nowrap"
-                      >
-                        {item.name}
-                        <svg
-                          className={`w-3 h-3 sm:w-4 sm:h-4 transition-transform ${
-                            openDropdown === item.name ? "rotate-180" : ""
-                          }`}
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M19 9l-7 7-7-7"
-                          />
-                        </svg>
-                      </button>
                     ) : (
                       <button
                         onClick={() => toggleDropdown(item.name)}
-                        className="text-white hover:text-[#C1FF72] transition-colors text-xs sm:text-sm flex items-center gap-1 whitespace-nowrap"
+                        className="text-white hover:text-[#C1FF72] transition-colors text-sm sm:text-base flex items-center gap-1 whitespace-nowrap"
                       >
                         {item.name}
                         <svg
@@ -199,38 +164,12 @@ export default function Header() {
                           />
                         </svg>
                       </button>
-                    )}
-                    {openDropdown === item.name && item.name !== "Services" && (
-                      <div 
-                        className={`absolute top-full left-0 mt-2 bg-black border border-gray-800 rounded-lg shadow-lg py-2 z-50 w-40 sm:w-44 md:w-48`}
-                      >
-                        <>
-                          <a
-                            href={`${item.href}-1`}
-                            className="block px-4 py-2 text-white hover:bg-gray-900 hover:text-[#C1FF72] transition-colors text-sm"
-                          >
-                            1
-                          </a>
-                          <a
-                            href={`${item.href}-2`}
-                            className="block px-4 py-2 text-white hover:bg-gray-900 hover:text-[#C1FF72] transition-colors text-sm"
-                          >
-                            2
-                          </a>
-                          <a
-                            href={`${item.href}-3`}
-                            className="block px-4 py-2 text-white hover:bg-gray-900 hover:text-[#C1FF72] transition-colors text-sm"
-                          >
-                            3
-                          </a>
-                        </>
-                      </div>
                     )}
                   </>
                 ) : (
                   <Link
                     href={item.href === "#home" ? "/" : item.href}
-                    className="text-white hover:text-[#C1FF72] transition-colors text-xs sm:text-sm whitespace-nowrap"
+                    className="text-white hover:text-[#C1FF72] transition-colors text-sm sm:text-base whitespace-nowrap"
                   >
                     {item.name}
                   </Link>
@@ -241,13 +180,12 @@ export default function Header() {
 
           {/* CTA Buttons */}
           <div className="flex items-center gap-1.5 sm:gap-2 md:gap-3 lg:gap-4">
-            <button className="text-[10px] sm:text-xs md:text-sm relative bg-[#C1FF72] text-black px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 rounded-4xl font-semibold hover:opacity-90 transition-opacity whitespace-nowrap">
-              <span className="hidden sm:inline">Pay invoice</span>
-              <span className="sm:hidden">Pay</span>
-            </button>
-            <button className="text-[10px] sm:text-xs md:text-sm bg-black border border-white text-white px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 rounded-4xl font-semibold hover:bg-white hover:text-black transition-colors hidden md:flex whitespace-nowrap">
+            <Link
+              href="/contact"
+              className="text-xs sm:text-sm md:text-base relative bg-[#C1FF72] text-black px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 rounded-4xl font-semibold hover:opacity-90 transition-opacity whitespace-nowrap"
+            >
               <span>Get a Quote</span>
-            </button>
+            </Link>
             
             {/* Hamburger Menu Button */}
             <button
@@ -304,36 +242,7 @@ export default function Header() {
                       {item.name === "Services" ? (
                         <button
                           onClick={() => toggleDropdown(item.name)}
-                          className="w-full flex items-center justify-between px-3 sm:px-4 py-2 sm:py-2.5 text-white hover:text-[#C1FF72] hover:bg-gray-900 active:bg-gray-800 transition-all duration-200 text-xs sm:text-sm rounded"
-                        >
-                          {item.name}
-                          <svg
-                            className={`w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform duration-300 ease-in-out ${
-                              openDropdown === item.name ? "rotate-180" : "rotate-0"
-                            }`}
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M19 9l-7 7-7-7"
-                            />
-                          </svg>
-                        </button>
-                      ) : item.name === "Service Areas" ? (
-                        <button
-                          onClick={(e) => {
-                            e.preventDefault();
-                            if (pathname !== "/serviceArea") {
-                              router.push("/serviceArea");
-                            } else {
-                              toggleDropdown(item.name);
-                            }
-                          }}
-                          className="w-full flex items-center justify-between px-3 sm:px-4 py-2 sm:py-2.5 text-white hover:text-[#C1FF72] hover:bg-gray-900 active:bg-gray-800 transition-all duration-200 text-xs sm:text-sm rounded"
+                          className="w-full flex items-center justify-between px-3 sm:px-4 py-2 sm:py-2.5 text-white hover:text-[#C1FF72] hover:bg-gray-900 active:bg-gray-800 transition-all duration-200 text-sm sm:text-base rounded"
                         >
                           {item.name}
                           <svg
@@ -355,7 +264,7 @@ export default function Header() {
                       ) : (
                         <button
                           onClick={() => toggleDropdown(item.name)}
-                          className="w-full flex items-center justify-between px-3 sm:px-4 py-2 sm:py-2.5 text-white hover:text-[#C1FF72] hover:bg-gray-900 active:bg-gray-800 transition-all duration-200 text-xs sm:text-sm rounded"
+                          className="w-full flex items-center justify-between px-3 sm:px-4 py-2 sm:py-2.5 text-white hover:text-[#C1FF72] hover:bg-gray-900 active:bg-gray-800 transition-all duration-200 text-sm sm:text-base rounded"
                         >
                           {item.name}
                           <svg
@@ -387,7 +296,7 @@ export default function Header() {
                               <Link
                                 key={index}
                                 href={service.href}
-                                className="block px-3 sm:px-4 py-1.5 sm:py-2 text-gray-300 hover:text-[#C1FF72] hover:bg-gray-900 active:bg-gray-800 transition-all duration-200 text-xs sm:text-sm rounded"
+                                className="block px-3 sm:px-4 py-1.5 sm:py-2 text-gray-300 hover:text-[#C1FF72] hover:bg-gray-900 active:bg-gray-800 transition-all duration-200 text-sm sm:text-base rounded"
                                 onClick={() => {
                                   setIsMobileMenuOpen(false);
                                   setOpenDropdown(null);
@@ -400,21 +309,21 @@ export default function Header() {
                             <>
                               <a
                                 href={`${item.href}-1`}
-                                className="block px-3 sm:px-4 py-1.5 sm:py-2 text-gray-300 hover:text-[#C1FF72] hover:bg-gray-900 active:bg-gray-800 transition-all duration-200 text-xs sm:text-sm rounded"
+                                className="block px-3 sm:px-4 py-1.5 sm:py-2 text-gray-300 hover:text-[#C1FF72] hover:bg-gray-900 active:bg-gray-800 transition-all duration-200 text-sm sm:text-base rounded"
                                 onClick={() => setIsMobileMenuOpen(false)}
                               >
                                 1
                               </a>
                               <a
                                 href={`${item.href}-2`}
-                                className="block px-3 sm:px-4 py-1.5 sm:py-2 text-gray-300 hover:text-[#C1FF72] hover:bg-gray-900 active:bg-gray-800 transition-all duration-200 text-xs sm:text-sm rounded"
+                                className="block px-3 sm:px-4 py-1.5 sm:py-2 text-gray-300 hover:text-[#C1FF72] hover:bg-gray-900 active:bg-gray-800 transition-all duration-200 text-sm sm:text-base rounded"
                                 onClick={() => setIsMobileMenuOpen(false)}
                               >
                                 2
                               </a>
                               <a
                                 href={`${item.href}-3`}
-                                className="block px-3 sm:px-4 py-1.5 sm:py-2 text-gray-300 hover:text-[#C1FF72] hover:bg-gray-900 active:bg-gray-800 transition-all duration-200 text-xs sm:text-sm rounded"
+                                className="block px-3 sm:px-4 py-1.5 sm:py-2 text-gray-300 hover:text-[#C1FF72] hover:bg-gray-900 active:bg-gray-800 transition-all duration-200 text-sm sm:text-base rounded"
                                 onClick={() => setIsMobileMenuOpen(false)}
                               >
                                 3
@@ -426,7 +335,7 @@ export default function Header() {
                   ) : (
                     <Link
                       href={item.href === "#home" ? "/" : item.href}
-                      className="block px-3 sm:px-4 py-2 sm:py-2.5 text-white hover:text-[#C1FF72] hover:bg-gray-900 active:bg-gray-800 transition-all duration-200 text-xs sm:text-sm rounded"
+                      className="block px-3 sm:px-4 py-2 sm:py-2.5 text-white hover:text-[#C1FF72] hover:bg-gray-900 active:bg-gray-800 transition-all duration-200 text-sm sm:text-base rounded"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {item.name}
@@ -435,9 +344,13 @@ export default function Header() {
                 </div>
               ))}
               <div className="pt-3 sm:pt-4 border-t border-gray-800 px-3 sm:px-4 mt-2">
-                <button className="w-full text-xs sm:text-sm bg-black border border-white text-white px-3 sm:px-4 py-2 sm:py-2.5 rounded-4xl font-semibold hover:bg-white hover:text-black active:bg-gray-100 transition-all duration-200">
+                <Link
+                  href="/contact"
+                  className="block w-full text-center text-sm sm:text-base relative bg-[#C1FF72] text-black px-3 sm:px-4 py-2 sm:py-2.5 rounded-4xl font-semibold hover:opacity-90 active:opacity-80 transition-opacity"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
                   Get a Quote
-                </button>
+                </Link>
               </div>
             </nav>
         </div>

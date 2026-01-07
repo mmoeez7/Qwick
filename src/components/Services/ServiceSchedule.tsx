@@ -1,6 +1,20 @@
 import Image from "next/image";
 
-export default function Schedule() {
+interface ServiceScheduleProps {
+  description?: string[];
+  phoneNumber?: string;
+}
+
+export default function Schedule({ 
+  description, 
+  phoneNumber = "202-643-8113" 
+}: ServiceScheduleProps = {}) {
+  const defaultDescription = [
+    "Tell us about your kitchen and we'll provide a fast, no-obligation quote for cleaning or fire protection service."
+  ];
+
+  const paragraphs = description || defaultDescription;
+
   return (
     <section className="py-6 sm:py-8 md:py-10 lg:py-12 bg-[#F9F9F9]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -27,10 +41,16 @@ export default function Schedule() {
             </div>
 
             {/* Description */}
-            <p className="mb-6 sm:mb-8 md:mb-10 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed text-black">
-              Tell us about your kitchen and we&apos;ll provide a fast,
-              no-obligation quote for cleaning or fire protection service.
-            </p>
+            <div className="mb-6 sm:mb-8 md:mb-10 space-y-4">
+              {paragraphs.map((text, index) => (
+                <p 
+                  key={index}
+                  className="text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed text-black"
+                >
+                  {text}
+                </p>
+              ))}
+            </div>
 
             {/* Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6">
@@ -38,11 +58,9 @@ export default function Schedule() {
                 Request a Quote
               </button>
 
-              <div className="rounded-4xl bg-gradient-to-r from-gray-300 to-black p-[2px] w-full sm:w-auto">
-                <button className="rounded-4xl bg-[#C1FF72] px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg font-semibold text-black transition hover:bg-white/20 hover:text-white w-full cursor-pointer">
-                  Call Us
-                </button>
-              </div>
+              <button className="rounded-4xl bg-[#C1FF72] px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg font-semibold text-black border-2 border-black transition hover:bg-white/20 hover:text-white w-full sm:w-auto cursor-pointer">
+                Call Us
+              </button>
             </div>
           </div>
 

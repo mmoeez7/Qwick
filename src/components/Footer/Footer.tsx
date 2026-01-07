@@ -44,13 +44,13 @@ export default function Footer() {
             {/* Left Column - Company Info */}
             <div className="space-y-6">
               {/* Logo */}
-              <div className="flex items-center gap-2">
+              <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity w-fit">
                 <Logo />
                 <div className="flex flex-col">
                   <span className="text-xl sm:text-2xl font-bold text-white">QWICK</span>
                   <span className="text-xs sm:text-sm text-gray-400">Services and Solutions</span>
                 </div>
-              </div>
+              </Link>
               
               {/* Tagline */}
               <p className="text-sm sm:text-base text-gray-300 leading-relaxed">

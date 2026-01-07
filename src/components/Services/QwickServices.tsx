@@ -14,7 +14,7 @@ export default function QwickServices({ serviceSlug = "default" }: QwickServices
         <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white w-full h-auto">
             <div className="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl w-full h-auto mb-40">
                 {/* Left Column - Text Content */}
-                <div className="w-full mb-6 sm:mb-8 lg:mb-8">
+                <div className="w-full mb-20 sm:mb-20 lg:mb-25">
                     <div className="space-y-6 sm:space-y-8">
                         {/* Main Heading */}
                         <h1 

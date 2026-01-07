@@ -23,13 +23,18 @@ export default function ContactHeader() {
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl py-12 sm:py-16 md:py-20 lg:py-24">
         <div className="text-center">
           {/* Main Heading */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 leading-tight">
-            <span className="text-[#A9FF3E]">Contact Qwick Services</span>{" "}
-            <span className="text-black">and Solutions LLC</span>
+          <h1 
+            data-animate
+            className="text-[28px] sm:text-[40px] md:text-[50px] lg:text-[55px] font-bold mb-6 sm:mb-8 leading-tight bg-gradient-to-r from-[#A9FF3E] to-black bg-clip-text text-transparent"
+          >
+            Contact Qwick Services and Solutions LLC
           </h1>
 
           {/* Description Paragraph */}
-          <p className="text-base sm:text-lg md:text-xl text-gray-800 max-w-4xl mx-auto leading-relaxed">
+          <p 
+            data-animate
+            className="text-base sm:text-lg md:text-xl text-gray-800 max-w-4xl mx-auto leading-relaxed"
+          >
             Have a question, need a quote, or dealing with an urgent kitchen exhaust or fire safety issue? Qwick Services and Solutions LLC is here to help with NFPA-focused service and clear communication.
           </p>
         </div>
