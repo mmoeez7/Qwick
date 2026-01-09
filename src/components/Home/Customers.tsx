@@ -4,39 +4,39 @@ export default function Customers() {
   const testimonials = [
     {
       name: "Scott K.",
-      role: "Project Manager, Security",
-      testimonial: "The single most impressive thing about Qwick is how fast they respond. At times we've reported an issue or service request and they fixed it within 10-15 minutes.",
+      role: "Restaurant General Manager, Sterling, VA",
+      testimonial: "The single most impressive thing about Qwick Services and Solutions is how quickly they respond. When our hood system failed during dinner rush, they arrived the same night, cleaned the entire system, and had us back in full operation before opening the next day.",
       avatar: "/Home/Customers/Testimonial.svg"
     },
     {
-      name: "Scott K.",
-      role: "Cloud Kitchen Operator, Dubai",
-      testimonial: "It's like having a professional service team that understands our needs perfectly, but better tailored for our region.",
-      avatar: "/Home/Customers/Scott.jpg"
-    },
-    {
-      name: "Maya Patel",
-      role: "Franchise Group, Qatar",
-      testimonial: "We onboarded 12 branches in under 3 weeks with full control and excellent service quality throughout.",
+      name: "Maya P.",
+      role: "Multi-Unit Franchise Owner, Northern Virginia",
+      testimonial: "Qwick onboarded 8 of our locations in less than 2 weeks, set up a clear cleaning schedule, and provided detailed after-service reports for every visit. Our health and fire inspections have been smoother than ever since partnering with them.",
       avatar: "/Home/Customers/Maya.png"    
     },
     {
-      name: "Alena Oliver",
-      role: "Engineering Manager, Replit",
-      testimonial: "The single most impressive thing about Qwick is how fast they respond. At times we've reported an issue or service request and they fixed it within 10-15 minutes.",
-      avatar: "/Home/Customers/Alena.png"
-    },
-    {
-      name: "Alex Rivera",
-      role: "Cyber Security Expert",
-      testimonial: "The single most impressive thing about Qwick is how fast they respond. At times we've reported an issue or service request and they fixed it within 10-15 minutes.",
+      name: "Alex R.",
+      role: "Facilities Director, Hotel Group – DC Metro",
+      testimonial: "Qwick manages our hood, duct, and rooftop fan cleaning across multiple kitchens, plus hinge kits and grease containment. Their team understands NFPA 96 requirements, so we stay compliant without chasing paperwork or follow-ups.",
       avatar: "/Home/Customers/Alex.png"
     },
     {
-      name: "David Kim",
-      role: "HR Director at Catalyst Industries",
-      testimonial: "The single most impressive thing about Qwick is how fast they respond. At times we've reported an issue or service request and they fixed it within 10-15 minutes.",
+      name: "Alena O.",
+      role: "Property Manager, Shared Commercial Kitchens",
+      testimonial: "What stands out about Qwick is their professionalism and documentation. The technicians take thorough before-and-after photos, label every system, and send reports that make it easy to show ownership exactly what was done each visit.",
+      avatar: "/Home/Customers/Alena.png"
+    },
+    {
+      name: "David K.",
+      role: "Executive Chef, Casual Dining Brand",
+      testimonial: "Since switching to Qwick, grease buildup in our hoods and on the roof has dropped dramatically. They schedule around our prep and closing times, clean up after themselves, and our kitchen staff trusts their crew in the building.",
       avatar: "/Home/Customers/David.png"
+    },
+    {
+      name: "Elena S.",
+      role: "Operations Manager, Regional Fast-Food Chain",
+      testimonial: "Qwick handles emergency cleanings, fan belt changes, and regular exhaust maintenance for all our busiest stores. Having one vendor that can respond 24/7 and keep every location on a predictable maintenance plan has been a game changer for our operations.",
+      avatar: "/Home/Customers/Elena.jpg"
     },
   ];
 
@@ -94,7 +94,7 @@ export default function Customers() {
 
               {/* Testimonial Text */}
               <p className="text-xs sm:text-sm md:text-md text-gray-700 leading-relaxed flex-1">
-                "{testimonial.testimonial}"
+                {testimonial.testimonial}
               </p>
             </div>
           ))}

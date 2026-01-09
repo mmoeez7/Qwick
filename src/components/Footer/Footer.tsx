@@ -51,7 +51,7 @@ export default function Footer() {
                   <span className="text-xs sm:text-sm text-gray-400">Services and Solutions</span>
                 </div>
               </Link>
-              
+
               {/* Tagline */}
               <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
                 Your trusted partner for commercial kitchen maintenance, safety, and compliance.
@@ -140,7 +140,7 @@ export default function Footer() {
                     />
                   </svg>
                   <span className="text-sm sm:text-base text-gray-300">
-                    1234 Kitchen Blvd, Suit 100 Washington, DC 2001
+                    Sterling, Virginia, 20166
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
@@ -161,7 +161,7 @@ export default function Footer() {
                     href="mailto:info@quickservices.com"
                     className="text-sm sm:text-base text-gray-300 hover:text-[#C1FF72] transition-colors"
                   >
-                    info@quickservices.com
+                    contact@qwicksolutions.com
                   </a>
                 </li>
                 <li className="flex items-start gap-3">

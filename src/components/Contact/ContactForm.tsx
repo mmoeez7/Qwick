@@ -12,6 +12,7 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
     email: "",
     phone: "",
     phoneCountryCode: "US",
+    address: "",
     city: "",
     state: "",
     message: "",
@@ -54,6 +55,7 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
         email: "",
         phone: "",
         phoneCountryCode: "US",
+        address: "",
         city: "",
         state: "",
         message: "",
@@ -145,6 +147,22 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
           </div>
         </div>
 
+        {/* Address */}
+        <div data-animate>
+          <label htmlFor="address" className="block text-sm font-medium text-gray-900 mb-2">
+            Address
+          </label>
+          <input
+            type="text"
+            id="address"
+            name="address"
+            value={formData.address}
+            onChange={handleChange}
+            className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#A9FF3E] focus:ring-1 focus:ring-[#A9FF3E] transition-colors"
+            placeholder="Street address, apartment, suite, etc."
+          />
+        </div>
+
         {/* Location - City and State in a row */}
         <div data-animate className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {/* Location - City */}
@@ -152,21 +170,15 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
             <label htmlFor="city" className="block text-sm font-medium text-gray-900 mb-2">
               Location - city
             </label>
-            <select
+            <input
+              type="text"
               id="city"
               name="city"
               value={formData.city}
               onChange={handleChange}
-              className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:border-[#A9FF3E] focus:ring-1 focus:ring-[#A9FF3E] transition-colors"
-            >
-              <option value="">Select city</option>
-              <option value="Sterling">Sterling</option>
-              <option value="Washington">Washington</option>
-              <option value="Baltimore">Baltimore</option>
-              <option value="Philadelphia">Philadelphia</option>
-              <option value="Newark">Newark</option>
-              <option value="Charlotte">Charlotte</option>
-            </select>
+              className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#A9FF3E] focus:ring-1 focus:ring-[#A9FF3E] transition-colors"
+              placeholder="Enter city"
+            />
           </div>
 
           {/* Location - State */}
@@ -174,21 +186,15 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
             <label htmlFor="state" className="block text-sm font-medium text-gray-900 mb-2">
               Location - state
             </label>
-            <select
+            <input
+              type="text"
               id="state"
               name="state"
               value={formData.state}
               onChange={handleChange}
-              className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:border-[#A9FF3E] focus:ring-1 focus:ring-[#A9FF3E] transition-colors"
-            >
-              <option value="">Select state</option>
-              <option value="VA">Virginia</option>
-              <option value="MD">Maryland</option>
-              <option value="DC">Washington DC</option>
-              <option value="PA">Pennsylvania</option>
-              <option value="NJ">New Jersey</option>
-              <option value="NC">North Carolina</option>
-            </select>
+              className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#A9FF3E] focus:ring-1 focus:ring-[#A9FF3E] transition-colors"
+              placeholder="Enter state"
+            />
           </div>
         </div>
 

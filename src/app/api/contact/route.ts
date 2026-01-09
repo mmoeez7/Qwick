@@ -8,6 +8,7 @@ type ContactPayload = {
   email: string;
   phone: string;
   phoneCountryCode?: string;
+  address?: string;
   city?: string;
   state?: string;
   businessName?: string;
@@ -68,6 +69,7 @@ export async function POST(req: Request) {
       `Phone: ${phoneFull}`,
       `Business: ${body.businessName || "-"}`,
       `Urgency: ${body.serviceUrgency || "-"}`,
+      `Address: ${body.address || "-"}`,
       `City: ${body.city || "-"}`,
       `State: ${body.state || "-"}`,
       "",

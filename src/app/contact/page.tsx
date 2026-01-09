@@ -17,9 +17,9 @@ export default function ContactPage() {
       
       {/* Contact Section */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl py-12 sm:py-16 lg:py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 lg:items-stretch">
           {/* Left Column - Contact Information and Map */}
-          <div className="space-y-8">
+          <div className="flex flex-col space-y-8">
             <div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-8">
                 How to Reach Us
@@ -113,13 +113,13 @@ export default function ContactPage() {
             </div>
 
             {/* Map */}
-            <div className="mt-8">
+            <div className="mt-8 flex-1 min-h-0">
               <MapboxMap />
             </div>
           </div>
 
           {/* Right Column - Contact Form */}
-          <div>
+          <div className="flex flex-col">
             <ContactForm />
           </div>
         </div>

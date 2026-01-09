@@ -81,7 +81,7 @@ export default function MapboxMap() {
   // If no Mapbox token, use Google Maps embed (works without API key)
   if (!mapboxToken) {
     return (
-      <div className="w-full h-[400px] sm:h-[500px] rounded-lg overflow-hidden">
+      <div className="w-full h-full min-h-[400px] sm:min-h-[500px] rounded-lg overflow-hidden">
         <iframe
           width="100%"
           height="100%"
@@ -96,7 +96,7 @@ export default function MapboxMap() {
   }
 
   return (
-    <div className="w-full h-[400px] sm:h-[500px] rounded-lg overflow-hidden bg-gray-200">
+    <div className="w-full h-full min-h-[400px] sm:min-h-[500px] rounded-lg overflow-hidden bg-gray-200">
       <div ref={mapContainer} className="w-full h-full" />
     </div>
   );
