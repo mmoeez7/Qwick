@@ -30,7 +30,7 @@ export default function VirginiaPage() {
             <WhatQwickCanDoSection />
 
             {/* Cover Area Section */}
-            <CoverArea />
+            <CoverArea stateName="Virginia" />
 
             {/* Why Choose Qwick Section */}
             <WhyChooseQwick stateName="Virginia" />

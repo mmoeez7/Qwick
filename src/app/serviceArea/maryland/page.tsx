@@ -30,7 +30,7 @@ export default function MarylandPage() {
             <WhatQwickCanDoSection />
 
             {/* Cover Area Section */}
-            <CoverArea />
+            <CoverArea stateName="Maryland" />
 
             {/* Why Choose Qwick Section */}
             <WhyChooseQwick stateName="Maryland" />

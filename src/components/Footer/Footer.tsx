@@ -11,12 +11,14 @@ export default function Footer() {
     "Contact"
   ];
 
-  const popularServices = [
-    "Exhaust System Cleaning",
-    "Repairs & Emergency",
-    "Installations & Upgrades",
-    "Preventive Maintenance",
-    "Fire Suppression"
+  const serviceAreasForNavigation = [
+    { name: "New Jersey", slug: "new-jersey" },
+    { name: "Maryland", slug: "maryland" },
+    { name: "Virginia", slug: "virginia" },
+    { name: "Washington DC", slug: "washington-dc" },
+    { name: "North Carolina", slug: "north-carolina" },
+    { name: "Delaware", slug: "delaware" },
+    { name: "Pennsylvania", slug: "pennsylvania" }
   ];
 
   const serviceAreas = [
@@ -97,15 +99,18 @@ export default function Footer() {
                 </ul>
               </div>
 
-              {/* Popular Services */}
+              {/* Service Areas */}
               <div>
-                <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6">Popular Services</h3>
+                <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6">Service Areas</h3>
                 <ul className="space-y-3">
-                  {popularServices.map((service, index) => (
+                  {serviceAreasForNavigation.map((area, index) => (
                     <li key={index}>
-                      <span className="text-sm sm:text-base text-gray-300">
-                        {service}
-                      </span>
+                      <Link
+                        href={`/serviceArea/${area.slug}`}
+                        className="text-sm sm:text-base text-gray-300 hover:text-[#C1FF72] transition-colors"
+                      >
+                        {area.name}
+                      </Link>
                     </li>
                   ))}
                 </ul>

@@ -9,7 +9,7 @@ interface VentilationProblemsProps {
   imageSrc?: string;
 }
 
-export default function VentilationProblems({ imageSrc = "/ventilation.jpg" }: VentilationProblemsProps) {
+export default function VentilationProblems({ imageSrc = "/Services/ventilation.jpg" }: VentilationProblemsProps) {
   const problems: Problem[] = [
     {
       title: "The kitchen is smoky",

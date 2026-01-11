@@ -13,13 +13,13 @@ export default function QwickServices({ serviceSlug = "default" }: QwickServices
 
     // Map service slugs to their corresponding images
     const imageMap: Record<string, string> = {
-        "emergency-service": "/emergency.jpg",
+        "emergency-service": "/Services/emergency.jpg",
         "commercial-hood-cleaning": "/Services/service-man.png",
-        "grease-trap-line-jetting": "/hood.png",
-        "hvac-makeup-air": "/Hvac.png",
-        "mechanical-preventive-maintenance": "/mechanical.jpg",
-        "pollution-control-unit": "/pcu.jpg",
-        "fire-suppression": "/supperssion.jpg",
+        "grease-trap-line-jetting": "/Services/hood.png",
+        "hvac-makeup-air": "/Services/Hvac.png",
+        "mechanical-preventive-maintenance": "/Services/mechanical.jpg",
+        "pollution-control-unit": "/Services/pcu.jpg",
+        "fire-suppression": "/Services/supperssion.jpg",
         "default": "/Services/service-man.png",
     };
 

@@ -1,6 +1,11 @@
 import Image from "next/image";
+import Link from "next/link";
 
-export default function Schedule() {
+interface CoverAreaProps {
+    stateName?: string;
+}
+
+export default function CoverArea({ stateName }: CoverAreaProps) {
     return (
         <section className="py-6 sm:py-8 md:py-10 lg:py-12 bg-[#F9F9F9]">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -22,26 +27,30 @@ export default function Schedule() {
                             </div>
 
                             <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-5xl xl:text-5xl font-bold text-black relative z-10 pr-4 md:pr-0">
-                                Not sure if we cover your area?
+                                Ready to schedule your kitchen exhaust cleaning or fire suppression service{stateName ? ` in ${stateName}` : ''}?
                             </h2>
                         </div>
 
                         {/* Description */}
                         <p className="mb-6 sm:mb-8 md:mb-10 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed text-black">
-                            Contact Qwick Services and Solutions LLC and tell us about your location—we'll confirm service availability and provide a fast, no‑obligation quote.
+                            Get in touch with Qwick Services and Solutions LLC for a fast, no-obligation quote.
                         </p>
 
                         {/* Buttons */}
                         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6">
-                            <button className="rounded-4xl bg-black px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg font-semibold text-white transition hover:text-black hover:bg-transparent hover:border-black border-2 border-black w-full sm:w-auto cursor-pointer">
+                            <Link 
+                                href="/contact"
+                                className="rounded-4xl bg-black px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg font-semibold text-white transition hover:opacity-90 w-full sm:w-auto cursor-pointer text-center"
+                            >
                                 Request a Quote
-                            </button>
+                            </Link>
 
-                            <div className="rounded-4xl bg-gradient-to-r from-gray-300 to-black p-[2px] w-full sm:w-auto">
-                                <button className="rounded-4xl bg-[#C1FF72] px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg font-semibold text-black transition hover:bg-white/20 hover:text-white w-full cursor-pointer">
-                                    Call Us
-                                </button>
-                            </div>
+                            <Link 
+                                href="tel:+18005550123"
+                                className="rounded-4xl bg-transparent border-2 border-[#C1FF72] px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg font-semibold text-[#C1FF72] transition hover:bg-[#C1FF72] hover:text-black w-full sm:w-auto cursor-pointer text-center"
+                            >
+                                Call Us
+                            </Link>
                         </div>
                     </div>
 

@@ -30,7 +30,7 @@ export default function NewJerseyPage() {
             <WhatQwickCanDoSection />
 
             {/* Cover Area Section */}
-            <CoverArea />
+            <CoverArea stateName="New Jersey" />
 
             {/* Why Choose Qwick Section */}
             <WhyChooseQwick stateName="New Jersey" />

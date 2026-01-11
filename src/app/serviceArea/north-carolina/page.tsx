@@ -30,7 +30,7 @@ export default function NorthCarolinaPage() {
             <WhatQwickCanDoSection />
 
             {/* Cover Area Section */}
-            <CoverArea />
+            <CoverArea stateName="North Carolina" />
 
             {/* Why Choose Qwick Section */}
             <WhyChooseQwick stateName="North Carolina" />

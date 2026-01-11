@@ -30,7 +30,7 @@ export default function PennsylvaniaPage() {
             <WhatQwickCanDoSection />
 
             {/* Cover Area Section */}
-            <CoverArea />
+            <CoverArea stateName="Pennsylvania" />
 
             {/* Why Choose Qwick Section */}
             <WhyChooseQwick stateName="Pennsylvania" />

@@ -30,7 +30,7 @@ export default function WashingtonDCPage() {
             <WhatQwickCanDoSection />
 
             {/* Cover Area Section */}
-            <CoverArea />
+            <CoverArea stateName="Washington, DC" />
 
             {/* Why Choose Qwick Section */}
             <WhyChooseQwick stateName="Washington, DC" />

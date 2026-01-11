@@ -30,7 +30,7 @@ export default function DelawarePage() {
             <WhatQwickCanDoSection />
 
             {/* Cover Area Section */}
-            <CoverArea />
+            <CoverArea stateName="Delaware" />
 
             {/* Why Choose Qwick Section */}
             <WhyChooseQwick stateName="Delaware" />

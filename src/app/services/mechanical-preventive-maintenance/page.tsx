@@ -23,7 +23,7 @@ export default function MechanicalPreventiveMaintenancePage() {
       <MechanicalServices />
 
       {/* Ventilation Problems Section */}
-      <VentilationProblems imageSrc="/ventilation.jpg" />
+      <VentilationProblems imageSrc="/Services/ventilation.jpg" />
 
       {/* Services Area Section */}
       <ServicesArea />
