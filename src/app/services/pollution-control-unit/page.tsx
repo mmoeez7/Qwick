@@ -26,7 +26,7 @@ export default function PollutionControlUnitPage() {
           highlight: "Our PCU Services"
         }}
         introText="Our PCU service programs are tailored to the specific configuration and duty of your system. Typical services include:"
-        imageSrc="/Services/PCU.png"
+        imageSrc="/Services/PCUservice.jpg"
         imageAlt="PCU Service illustration"
         features={[
           {
@@ -61,7 +61,7 @@ export default function PollutionControlUnitPage() {
         introText="Qwick Solutions services a wide range of commercial kitchen PCUs and related technologies, including but not limited to:"
         buttonText="Hire Us Today"
         buttonLink="#"
-        imageSrc="/Services/PCU.png"
+        imageSrc="/Services/pcu.jpg"
         imageAlt="Equipment service illustration"
         equipment={[
           {

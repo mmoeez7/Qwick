@@ -25,7 +25,7 @@ export default function ChooseUs() {
           {/* Left Section - Image with Overlay */}
           <div className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-full lg:min-h-[600px] rounded-xl sm:rounded-2xl overflow-hidden flex items-center justify-center">
             <Image
-              src="/Home/ChooseUs/ChooseUS.svg"
+              src="/Van.svg"
               alt="Kitchen Maintenance and Care"
               fill
               className="object-contain"

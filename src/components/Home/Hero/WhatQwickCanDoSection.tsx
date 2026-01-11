@@ -41,47 +41,41 @@ export default function WhatQwickCanDoSection({
 
     const defaultSlides: Slide[] = [
         {
-            icon: "/Home/serviceSection/icon1.svg",
-            title: "Fire Suppression",
-            subtitle: "Inspection and Service",
-            description: "If We Can't Reach It, We Can't Clean It. A kitchen exhaust system is only as safe as its most inaccessible point",
+            title: "HVAC & Make-Up Air",
+            subtitle: "",
+            description: "Service for rooftop units and make-up air systems to balance airflow, reduce negative pressure, and keep staff more comfortable on the line",
             bgColor: "bg-[#E6FFC7]"
         },
         {
-            icon: "/Home/serviceSection/icon2.svg",
-            title: "Commercial Hood Cleaning & NFPA",
-            subtitle: "96 Compliance",
-            description: "A clean hood system isn't just about hygiene — it is your first line of defense against kitchen fires. We provide comprehensive exhaust system cleaning that meets and exceeds NFPA 96 Standards",
+            title: "Preventive Maintenance Programs",
+            subtitle: "",
+            description: "Planned cleaning and inspection schedules that keep you ahead of grease buildup, component wear, and code deadlines",
             bgColor: "bg-[#E6FFC7]"
         },
         {
-            icon: "/Home/serviceSection/icon3.svg",
-            title: "Access Panel and Hinge",
-            subtitle: "kit Installation",
-            description: "If We Can't Reach It, We Can't Clean It. A kitchen exhaust system is only as safe as its most inaccessible point",
+            title: "24/7 Emergency Service",
+            subtitle: "",
+            description: "Rapid response for shutdowns, failed inspections, or post-incident cleanups so you can return to safe operations as quickly as possible.",
             bgColor: "bg-[#E6FFC7]"
         },
         {
-            icon: "/Home/serviceSection/icon3.svg",
+            title: "Kitchen Exhaust Cleaning",
+            subtitle: "",
+            description: "Complete hood, duct, and fan cleaning to NFPA 96 standards, removing grease and buildup from canopy to rooftop for safer operation and better draft.",
+            bgColor: "bg-[#E6FFC7]"
+        },
+        {
             title: "Hood & Duct Cleaning",
-            subtitle: "kit Installation",
+            subtitle: "",
             description: "Deep cleaning of hood interiors, plenum areas, and ductwork to improve airflow, reduce fire risk, and support smoother inspections.",
             bgColor: "bg-[#E6FFC7]"
         },
         {
-            icon: "/Home/serviceSection/icon3.svg",
-            title: "Access Panel and Hinge",
-            subtitle: "kit Installation",
-            description: "If We Can't Reach It, We Can't Clean It. A kitchen exhaust system is only as safe as its most inaccessible point",
+            title: "Fire Suppression Service",
+            subtitle: "",
+            description: "Inspection, testing, and maintenance of kitchen fire suppression systems so they discharge properly, shut down fuel sources, and satisfy AHJ requirements",
             bgColor: "bg-[#E6FFC7]"
         },
-        {
-            icon: "/Home/serviceSection/icon3.svg",
-            title: "Access Panel and Hinge",
-            subtitle: "kit Installation",
-            description: "If We Can't Reach It, We Can't Clean It. A kitchen exhaust system is only as safe as its most inaccessible point",
-            bgColor: "bg-[#E6FFC7]"
-        }
     ];
 
     const slides = customSlides || defaultSlides;

@@ -103,12 +103,9 @@ export default function Footer() {
                 <ul className="space-y-3">
                   {popularServices.map((service, index) => (
                     <li key={index}>
-                      <a
-                        href="#"
-                        className="text-sm sm:text-base text-gray-300 hover:text-[#C1FF72] transition-colors"
-                      >
+                      <span className="text-sm sm:text-base text-gray-300">
                         {service}
-                      </a>
+                      </span>
                     </li>
                   ))}
                 </ul>

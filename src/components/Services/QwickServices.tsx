@@ -10,6 +10,21 @@ export default function QwickServices({ serviceSlug = "default" }: QwickServices
     // Get content for the service, fallback to default if not found
     const content = servicesContent[serviceSlug] || servicesContent["default"];
     const { mainHeading, subHeading, paragraphs } = content;
+
+    // Map service slugs to their corresponding images
+    const imageMap: Record<string, string> = {
+        "emergency-service": "/emergency.jpg",
+        "commercial-hood-cleaning": "/Services/service-man.png",
+        "grease-trap-line-jetting": "/hood.png",
+        "hvac-makeup-air": "/Hvac.png",
+        "mechanical-preventive-maintenance": "/mechanical.jpg",
+        "pollution-control-unit": "/pcu.jpg",
+        "fire-suppression": "/supperssion.jpg",
+        "default": "/Services/service-man.png",
+    };
+
+    // Get the image for this service, fallback to default
+    const imageSrc = imageMap[serviceSlug] || imageMap["default"];
     return (
         <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white w-full h-auto">
             <div className="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl w-full h-auto mb-40">
@@ -75,7 +90,7 @@ export default function QwickServices({ serviceSlug = "default" }: QwickServices
                             <div className="relative w-full h-full p-3 sm:p-4 md:p-5">
                                 <div className="relative w-full h-full rounded-xl sm:rounded-2xl overflow-hidden">
                                     <Image
-                                        src="/Services/service-man.png"
+                                        src={imageSrc}
                                         alt="Technician inspecting commercial kitchen exhaust hood"
                                         fill
                                         className="object-cover"
