@@ -1,10 +1,10 @@
 import ServicesHeader from "@/components/Services/ServicesHeader";
 import Navbar from "@/components/Navbar";
 import QwickServices from "@/components/Services/QwickServices";
-import KitchenMaintenance from "@/components/Services/KitchenMaintenance";
 import ServicesArea from "@/components/Services/ServicesArea";
 import Footer from "@/components/Footer/Footer";
 import ServiceSchedule from "@/components/Services/ServiceSchedule";
+import GreaseMaintenance from "@/components/Services/GreaseMaintenance";
 
 export default function GreaseTrapLineJettingPage() {
   return (
@@ -19,7 +19,7 @@ export default function GreaseTrapLineJettingPage() {
       <QwickServices serviceSlug="grease-trap-line-jetting" />
 
       {/* Kitchen Maintenance Section */}
-      <KitchenMaintenance />
+      <GreaseMaintenance />
 
       {/* Services Area Section */}
       <ServicesArea />

@@ -1,10 +1,10 @@
 import ServicesHeader from "@/components/Services/ServicesHeader";
 import Navbar from "@/components/Navbar";
 import QwickServices from "@/components/Services/QwickServices";
-import KitchenMaintenance from "@/components/Services/KitchenMaintenance";
 import ServicesArea from "@/components/Services/ServicesArea";
 import Footer from "@/components/Footer/Footer";
 import ServiceSchedule from "@/components/Services/ServiceSchedule";
+import EmergencyMaintenance from "@/components/Services/EmergencyMaintenance";
 
 export default function EmergencyServicePage() {
   return (
@@ -19,7 +19,7 @@ export default function EmergencyServicePage() {
       <QwickServices serviceSlug="emergency-service" />
 
       {/* Kitchen Maintenance Section */}
-      <KitchenMaintenance />
+     <EmergencyMaintenance />
 
       {/* Services Area Section */}
       <ServicesArea />

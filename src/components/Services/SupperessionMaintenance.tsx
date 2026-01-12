@@ -4,15 +4,15 @@ export default function ChooseUs() {
   const services = [
     {
       icon: "/Home/ChooseUs/sheild.svg",
-      title: "Interior hood and duct degreasing for better airflow and safety",
+      title: "Routine inspections, testing, and tagging of suppression systems",
     },
     {
-        icon: "/Home/ChooseUs/sheild.svg",
-        title: "Interior hood and duct degreasing for better airflow and safety",
+        icon: "/Home/ChooseUs/touch.svg",
+        title: "Nozzle, detection, and cylinder checks for code compliance",
       },
       {
-        icon: "/Home/ChooseUs/sheild.svg",
-        title: "Interior hood and duct degreasing for better airflow and safety",
+        icon: "/Home/ChooseUs/repair.svg",
+        title: "Repair and recharge options to restore protection quickly",
       }
   ];
 

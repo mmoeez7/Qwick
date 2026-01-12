@@ -1,7 +1,7 @@
 import ServicesHeader from "@/components/Services/ServicesHeader";
 import Navbar from "@/components/Navbar";
 import QwickServices from "@/components/Services/QwickServices";
-import KitchenMaintenance from "@/components/Services/KitchenMaintenance";
+import SupperessionMaintenance from "@/components/Services/SupperessionMaintenance";
 import ServicesArea from "@/components/Services/ServicesArea";
 import Footer from "@/components/Footer/Footer";
 import ServiceSchedule from "@/components/Services/ServiceSchedule";
@@ -19,7 +19,7 @@ export default function FireSuppressionPage() {
       <QwickServices serviceSlug="fire-suppression" />
 
       {/* Kitchen Maintenance Section */}
-      <KitchenMaintenance />
+      <SupperessionMaintenance />
 
       {/* Services Area Section */}
       <ServicesArea />

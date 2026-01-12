@@ -1,7 +1,7 @@
 import ServicesHeader from "@/components/Services/ServicesHeader";
 import Navbar from "@/components/Navbar";
 import QwickServices from "@/components/Services/QwickServices";
-import KitchenMaintenance from "@/components/Services/KitchenMaintenance";
+import HoodMaintenance from "@/components/Services/HoodMaintenance";
 import ServicesArea from "@/components/Services/ServicesArea";
 import Footer from "@/components/Footer/Footer";
 import ServiceSchedule from "@/components/Services/ServiceSchedule";
@@ -19,7 +19,7 @@ export default function CommercialHoodCleaningPage() {
       <QwickServices serviceSlug="commercial-hood-cleaning" />
 
       {/* Kitchen Maintenance Section */}
-      <KitchenMaintenance />
+      <HoodMaintenance/>
 
       {/* Services Area Section */}
       <ServicesArea />
