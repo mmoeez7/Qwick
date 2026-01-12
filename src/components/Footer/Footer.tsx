@@ -182,10 +182,10 @@ export default function Footer() {
                     />
                   </svg>
                   <a
-                    href="tel:+18005550123"
+                    href="tel:+12026438113"
                     className="text-sm sm:text-base text-gray-300 hover:text-[#C1FF72] transition-colors"
                   >
-                    +1 (800) 555-0123
+                    +1(202)643-8113
                   </a>
                 </li>
               </ul>

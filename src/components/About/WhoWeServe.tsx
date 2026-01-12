@@ -30,7 +30,7 @@ export default function WhoWeServe() {
           {/* Left Side - Image */}
           <div className="relative w-full lg:w-1/3 h-[280px] sm:h-[360px] md:h-[420px] lg:h-[480px] xl:h-[520px] bg-gray-100 rounded-2xl sm:rounded-3xl shadow-lg overflow-hidden">
             <Image
-              src="/aboutus.jpg"
+              src="/About/aboutus.jpg"
               alt="Qwick Services team"
               fill
               className="object-cover"

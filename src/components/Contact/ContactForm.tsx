@@ -92,7 +92,7 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
             value={formData.name}
             onChange={handleChange}
             className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#A9FF3E] focus:ring-1 focus:ring-[#A9FF3E] transition-colors"
-            placeholder="John Doe"
+            placeholder="Enter your full name"
           />
         </div>
 
@@ -111,7 +111,7 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
               value={formData.email}
               onChange={handleChange}
               className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#A9FF3E] focus:ring-1 focus:ring-[#A9FF3E] transition-colors"
-              placeholder="john@example.com"
+              placeholder="Enter your email address"
             />
           </div>
 
@@ -141,7 +141,7 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
                 value={formData.phone}
                 onChange={handleChange}
                 className="w-full px-4 py-3 pl-20 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#A9FF3E] focus:ring-1 focus:ring-[#A9FF3E] transition-colors"
-                placeholder="+1 (555) 000-0000"
+                placeholder="+0 (000) 000-0000"
               />
             </div>
           </div>
@@ -159,7 +159,7 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
             value={formData.address}
             onChange={handleChange}
             className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#A9FF3E] focus:ring-1 focus:ring-[#A9FF3E] transition-colors"
-            placeholder="Street address, apartment, suite, etc."
+            placeholder="Enter your street address"
           />
         </div>
 
@@ -168,7 +168,7 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
           {/* Location - City */}
           <div>
             <label htmlFor="city" className="block text-sm font-medium text-gray-900 mb-2">
-              Location - city
+              City
             </label>
             <input
               type="text"
@@ -184,7 +184,7 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
           {/* Location - State */}
           <div>
             <label htmlFor="state" className="block text-sm font-medium text-gray-900 mb-2">
-              Location - state
+              State
             </label>
             <input
               type="text"
@@ -206,7 +206,7 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
           <textarea
             id="message"
             name="message"
-            required
+            required 
             rows={5}
             value={formData.message}
             onChange={handleChange}
@@ -228,7 +228,7 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
               value={formData.businessName}
               onChange={handleChange}
               className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#A9FF3E] focus:ring-1 focus:ring-[#A9FF3E] transition-colors"
-              placeholder="Your Business Name"
+              placeholder="Enter your business name"
             />
           </div>
         </div>

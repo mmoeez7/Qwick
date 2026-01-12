@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 export interface EquipmentItem {
   title: string;
@@ -30,7 +31,7 @@ export default function EquipmentServices({
   heading,
   introText,
   buttonText = "Hire Us Today",
-  buttonLink = "#",
+  buttonLink = "/contact",
   imageSrc,
   imageAlt = "Equipment service illustration",
   equipment,
@@ -60,7 +61,7 @@ export default function EquipmentServices({
 
             {/* Button */}
             <div data-animate>
-              <a
+              <Link
                 href={buttonLink}
                 className="inline-flex items-center gap-2 bg-[#A9FF3E] text-black px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-semibold text-base sm:text-lg hover:bg-[#95E62E] transition-colors"
               >
@@ -81,7 +82,7 @@ export default function EquipmentServices({
                     strokeLinejoin="round"
                   />
                 </svg>
-              </a>
+              </Link>
             </div>
 
             {/* Image */}

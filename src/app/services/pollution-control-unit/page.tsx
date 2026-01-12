@@ -60,7 +60,7 @@ export default function PollutionControlUnitPage() {
         }}
         introText="Qwick Solutions services a wide range of commercial kitchen PCUs and related technologies, including but not limited to:"
         buttonText="Hire Us Today"
-        buttonLink="#"
+        buttonLink="/contact"
         imageSrc="/Services/pcu.jpg"
         imageAlt="Equipment service illustration"
         equipment={[
