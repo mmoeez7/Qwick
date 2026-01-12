@@ -1,9 +1,13 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 
 export default function SmoothScrollProvider() {
+  const pathname = usePathname();
+  const lenisRef = useRef<Lenis | null>(null);
+
   useEffect(() => {
     // Initialize Lenis smooth scroll
     const lenis = new Lenis({
@@ -16,6 +20,8 @@ export default function SmoothScrollProvider() {
       touchMultiplier: 2,
       infinite: false,
     });
+
+    lenisRef.current = lenis;
 
     // Animation frame loop
     function raf(time: number) {
@@ -96,6 +102,27 @@ export default function SmoothScrollProvider() {
       mutationObserver.disconnect();
     };
   }, []);
+
+  // Scroll to top on route change
+  useEffect(() => {
+    // Small delay to ensure DOM is ready
+    const timer = setTimeout(() => {
+      if (lenisRef.current) {
+        // Use Lenis to scroll to top immediately
+        try {
+          lenisRef.current.scrollTo(0, { immediate: true });
+        } catch (e) {
+          // Fallback if Lenis scrollTo fails
+          window.scrollTo(0, 0);
+        }
+      } else {
+        // Fallback to window scroll if Lenis not ready
+        window.scrollTo(0, 0);
+      }
+    }, 50);
+
+    return () => clearTimeout(timer);
+  }, [pathname]);
 
   return null;
 }

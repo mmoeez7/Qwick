@@ -3,9 +3,11 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Logo from "./Home/Hero/Logo";
 
 export default function Header() {
+  const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -49,6 +51,20 @@ export default function Header() {
     { name: "About", href: "/about", hasDropdown: false },
     { name: "Contact", href: "/contact", hasDropdown: false },
   ];
+
+  // Check if a nav item is active
+  const isActive = (item: typeof navItems[0]) => {
+    if (item.name === "Home") {
+      return pathname === "/";
+    }
+    if (item.name === "Services") {
+      return pathname.startsWith("/services");
+    }
+    if (item.name === "Service Areas") {
+      return pathname.startsWith("/serviceArea");
+    }
+    return pathname === item.href;
+  };
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -106,7 +122,9 @@ export default function Header() {
                         className="relative"
                       >
                         <button
-                          className="text-white hover:text-[#C1FF72] transition-colors text-sm sm:text-base flex items-center gap-1 whitespace-nowrap"
+                          className={`transition-colors text-sm sm:text-base flex items-center gap-1 whitespace-nowrap ${
+                            isActive(item) ? "text-[#C1FF72]" : "text-white hover:text-[#C1FF72]"
+                          }`}
                         >
                           {item.name}
                           <svg
@@ -169,7 +187,9 @@ export default function Header() {
                 ) : (
                   <Link
                     href={item.href === "#home" ? "/" : item.href}
-                    className="text-white hover:text-[#C1FF72] transition-colors text-sm sm:text-base whitespace-nowrap"
+                    className={`transition-colors text-sm sm:text-base whitespace-nowrap ${
+                      isActive(item) ? "text-[#C1FF72]" : "text-white hover:text-[#C1FF72]"
+                    }`}
                   >
                     {item.name}
                   </Link>
@@ -242,7 +262,9 @@ export default function Header() {
                       {item.name === "Services" ? (
                         <button
                           onClick={() => toggleDropdown(item.name)}
-                          className="w-full flex items-center justify-between px-3 sm:px-4 py-2 sm:py-2.5 text-white hover:text-[#C1FF72] hover:bg-gray-900 active:bg-gray-800 transition-all duration-200 text-sm sm:text-base rounded"
+                          className={`w-full flex items-center justify-between px-3 sm:px-4 py-2 sm:py-2.5 hover:bg-gray-900 active:bg-gray-800 transition-all duration-200 text-sm sm:text-base rounded ${
+                            isActive(item) ? "text-[#C1FF72]" : "text-white hover:text-[#C1FF72]"
+                          }`}
                         >
                           {item.name}
                           <svg
@@ -264,7 +286,9 @@ export default function Header() {
                       ) : (
                         <button
                           onClick={() => toggleDropdown(item.name)}
-                          className="w-full flex items-center justify-between px-3 sm:px-4 py-2 sm:py-2.5 text-white hover:text-[#C1FF72] hover:bg-gray-900 active:bg-gray-800 transition-all duration-200 text-sm sm:text-base rounded"
+                          className={`w-full flex items-center justify-between px-3 sm:px-4 py-2 sm:py-2.5 hover:bg-gray-900 active:bg-gray-800 transition-all duration-200 text-sm sm:text-base rounded ${
+                            isActive(item) ? "text-[#C1FF72]" : "text-white hover:text-[#C1FF72]"
+                          }`}
                         >
                           {item.name}
                           <svg
@@ -335,7 +359,9 @@ export default function Header() {
                   ) : (
                     <Link
                       href={item.href === "#home" ? "/" : item.href}
-                      className="block px-3 sm:px-4 py-2 sm:py-2.5 text-white hover:text-[#C1FF72] hover:bg-gray-900 active:bg-gray-800 transition-all duration-200 text-sm sm:text-base rounded"
+                      className={`block px-3 sm:px-4 py-2 sm:py-2.5 hover:bg-gray-900 active:bg-gray-800 transition-all duration-200 text-sm sm:text-base rounded ${
+                        isActive(item) ? "text-[#C1FF72]" : "text-white hover:text-[#C1FF72]"
+                      }`}
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {item.name}

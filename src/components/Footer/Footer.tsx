@@ -4,11 +4,11 @@ import Logo from "../Home/Hero/Logo";
 
 export default function Footer() {
   const quickLinks = [
-    "Home",
-    "Services",
-    "Solutions",
-    "About",
-    "Contact"
+    { name: "Home", href: "/" },
+    { name: "Services", href: "/services" },
+    { name: "Service Areas", href: "/serviceArea" },
+    { name: "About", href: "/about" },
+    { name: "Contact", href: "/contact" }
   ];
 
   const serviceAreasForNavigation = [
@@ -27,7 +27,8 @@ export default function Footer() {
     "Virginia",
     "Pennsylvania",
     "Delaware",
-    "North Carolina"
+    "North Carolina",
+    "New Jersey"
   ];
 
   const socialIcons = [
@@ -88,12 +89,12 @@ export default function Footer() {
                 <ul className="space-y-3">
                   {quickLinks.map((link, index) => (
                     <li key={index}>
-                      <a
-                        href="#"
+                      <Link
+                        href={link.href}
                         className="text-sm sm:text-base text-gray-300 hover:text-[#C1FF72] transition-colors"
                       >
-                        {link}
-                      </a>
+                        {link.name}
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -160,7 +161,7 @@ export default function Footer() {
                     />
                   </svg>
                   <a
-                    href="mailto:info@quickservices.com"
+                    href="mailto:contact@qwicksolutions.com"
                     className="text-sm sm:text-base text-gray-300 hover:text-[#C1FF72] transition-colors"
                   >
                     contact@qwicksolutions.com
