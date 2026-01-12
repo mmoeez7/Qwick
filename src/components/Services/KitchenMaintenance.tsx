@@ -17,13 +17,13 @@ export default function ChooseUs() {
   ];
 
   return (
-    <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-[#F9F9F9] h-[70dvh]">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl -mt-45 ">
+    <section className="py-8 sm:py-12 md:py-16 lg:py-20 xl:py-24 bg-[#F9F9F9]">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
 
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16 items-start lg:items-center">
           {/* Left Section - Image with Overlay */}
-          <div className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-full lg:min-h-[600px] rounded-xl sm:rounded-2xl overflow-hidden flex items-center justify-center">
+          <div className="relative w-full h-[250px] sm:h-[300px] md:h-[400px] lg:h-full lg:min-h-[500px] xl:min-h-[600px] rounded-xl sm:rounded-2xl overflow-hidden flex items-center justify-center order-2 lg:order-1">
             <Image
               src="/Van.svg"
               alt="Kitchen Maintenance and Care"
@@ -34,7 +34,7 @@ export default function ChooseUs() {
           </div>
 
           {/* Right Section - Service Cards */}
-          <div className="flex flex-col justify-center space-y-4 sm:space-y-5 md:space-y-6">
+          <div className="flex flex-col justify-center space-y-4 sm:space-y-5 md:space-y-6 order-1 lg:order-2">
             {services.map((service, index) => (
               <div
                 key={index}
