@@ -13,7 +13,7 @@ export default function GreaseTrapLineJettingPage() {
       <Navbar />
       
       {/* Services Header */}
-      <ServicesHeader title="Grease trap and Line jetting services" />
+      <ServicesHeader title="Grease trap and Line jetting services" imageSrc="/Services/grease.png" />
       
       {/* Qwick Services Section */}
       <QwickServices serviceSlug="grease-trap-line-jetting" />

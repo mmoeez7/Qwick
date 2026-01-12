@@ -13,7 +13,7 @@ export default function FireSuppressionPage() {
       <Navbar />
       
       {/* Services Header */}
-      <ServicesHeader title="Fire Suppression Service" />
+      <ServicesHeader title="Fire Suppression Service" imageSrc="/Services/firesupression.jpg" />
       
       {/* Qwick Services Section */}
       <QwickServices serviceSlug="fire-suppression" />

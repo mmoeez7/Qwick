@@ -15,7 +15,7 @@ export default function PollutionControlUnitPage() {
       <Navbar />
       
       {/* Services Header */}
-      <ServicesHeader title="Pollution Control Unit (PCU) Service" />
+      <ServicesHeader title="Pollution Control Unit (PCU) Service" imageSrc="/Services/polution.png" />
       
       {/* Qwick Services Section */}
       <QwickServices serviceSlug="pollution-control-unit" />

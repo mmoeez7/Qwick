@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 interface ServiceScheduleProps {
   description?: string[];
@@ -54,13 +55,19 @@ export default function Schedule({
 
             {/* Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6">
-              <button className="rounded-4xl bg-black px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg font-semibold text-white transition hover:text-black hover:bg-transparent hover:border-black border-2 border-black w-full sm:w-auto cursor-pointer">
+              <Link 
+                href="/contact"
+                className="rounded-4xl bg-black px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg font-semibold text-white transition hover:text-black hover:bg-transparent hover:border-black border-2 border-black w-full sm:w-auto cursor-pointer text-center"
+              >
                 Request a Quote
-              </button>
+              </Link>
 
-              <button className="rounded-4xl bg-[#C1FF72] px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg font-semibold text-black border-2 border-black transition hover:bg-white/20 hover:text-white w-full sm:w-auto cursor-pointer">
+              <Link 
+                href="/contact"
+                className="rounded-4xl bg-[#C1FF72] px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg font-semibold text-black border-2 border-black transition hover:bg-white/20 hover:text-white w-full sm:w-auto cursor-pointer text-center"
+              >
                 Call Us
-              </button>
+              </Link>
             </div>
           </div>
 

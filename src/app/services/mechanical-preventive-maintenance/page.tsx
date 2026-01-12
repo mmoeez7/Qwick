@@ -14,7 +14,7 @@ export default function MechanicalPreventiveMaintenancePage() {
       <Navbar />
       
       {/* Services Header */}
-      <ServicesHeader title="Mechanical Preventive Maintenance" />
+      <ServicesHeader title="Mechanical Preventive Maintenance" imageSrc="/Services/mechanical.jpg" />
       
       {/* Qwick Services Section */}
       <QwickServices serviceSlug="mechanical-preventive-maintenance" />

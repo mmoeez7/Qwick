@@ -13,7 +13,7 @@ export default function EmergencyServicePage() {
       <Navbar />
       
       {/* Services Header */}
-      <ServicesHeader title="Emergency Service" />
+      <ServicesHeader title="Emergency Service" imageSrc="/Services/emerency.png" />
       
       {/* Qwick Services Section */}
       <QwickServices serviceSlug="emergency-service" />

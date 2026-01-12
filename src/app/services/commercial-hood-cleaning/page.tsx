@@ -13,7 +13,7 @@ export default function CommercialHoodCleaningPage() {
       <Navbar />
       
       {/* Services Header */}
-      <ServicesHeader title="Commercial Hood Cleaning & NFPA 96 Compliance" />
+      <ServicesHeader title="Commercial Hood Cleaning & NFPA 96 Compliance" imageSrc="/Services/hood.jpg" />
       
       {/* Qwick Services Section */}
       <QwickServices serviceSlug="commercial-hood-cleaning" />

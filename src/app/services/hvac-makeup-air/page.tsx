@@ -13,7 +13,7 @@ export default function HVACMakeupAirPage() {
       <Navbar />
       
       {/* Services Header */}
-      <ServicesHeader title="HVAC & Make‑Up Air" />
+      <ServicesHeader title="HVAC & Make‑Up Air" imageSrc="/Services/makeupAir.png" />
       
       {/* Qwick Services Section */}
       <QwickServices serviceSlug="hvac-makeup-air" />
