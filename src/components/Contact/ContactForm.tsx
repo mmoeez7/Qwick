@@ -45,8 +45,10 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
           body: JSON.stringify(formData),
         });
 
-        if (!res.ok) {
-          throw new Error("Failed to send");
+        const data = await res.json();
+        
+        if (!data.success) {
+          throw new Error(data.error || "Failed to send message");
         }
       }
       setSubmitStatus("success");

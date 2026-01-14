@@ -46,10 +46,10 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <a
-                    href="mailto:contact@qwicksolutions.com"
+                    href="mailto:m.moiz.irfan@gmail.com"
                     className="text-base sm:text-lg text-black hover:underline"
                   >
-                    contact@qwicksolutions.com
+                    m.moiz.irfan@gmail.com
                   </a>
                 </div>
               </div>
